@@ -19,10 +19,6 @@ super + d
 alt + Tab
 	rofi -show window
 
-# window switcher
-alt + Tab
-	rofi -show window
-
 super + n
 	pcmanfm
 
