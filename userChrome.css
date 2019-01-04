@@ -1,0 +1,61 @@
+@import url('file:///home/joseph/.cache/wal/colors.css');
+
+.tab-background[selected="true"] {
+	background-color: var(--color0)!important;
+	background-attachment: none!important;
+    background-image: none!important;
+}
+.tab-text {
+	color: #fff!important;
+}
+.tab-background {
+	background-color: var(--color0)!important;
+	border-top-width: 0!important;
+}
+.tab-close-button {
+	color: #eee!important;
+}
+.tab-line[selected="true"] {
+	background-color: transparent!important; /* var(--color1)!important; */
+	top: 0;
+	position: absolute;
+	height: 100%!important;
+	width: 100%!important;
+	border-right: 3px dotted var(--color1)!important;
+	border-bottom: 3px dotted var(--color1)!important;
+	border-left: 3px dotted var(--color1)!important;
+}
+
+.searchbar-textbox {
+	background-color: var(--color0)!important;
+	color: #eee!important;
+}
+
+#nav-bar {
+	background-color: var(--color0)!important;
+	color: #eee!important;
+	background-attachment: none!important;
+    background-image: none!important;
+}
+#urlbar {
+	background-color: var(--color0)!important;
+	color: #eee!important;
+}
+
+.browser-toolbar {
+	background-color: var(--color0)!important;
+	color: #eee!important;
+	background-attachment: none!important;
+    background-image: none!important;
+}
+
+#navigator-toolbox {
+	background-color: var(--color0)!important;
+}
+#tabbrowser-tabs {
+	background-color: var(--color0)!important;
+}
+
+.tabs-newtab-button {
+	background-color: var(--color0)!important;
+}
