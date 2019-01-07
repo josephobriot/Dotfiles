@@ -164,7 +164,7 @@ ramp-signal-4 = 
 [module/mpd]
 type = internal/mpd
 ;<bar-progress> for a progress bar ><
-format-online = <label-song>  <icon-prev>   <icon-stop> <toggle>   <icon-next>  <label-time> 
+format-online = <label-song>  <icon-prev>  <toggle>  <icon-next>
 label-song-font = 3
 format-online-padding = 2
 
