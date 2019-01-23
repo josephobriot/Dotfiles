@@ -42,6 +42,7 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 Plugin 'itchyny/lightline.vim'
 Plugin 'francoiscabrol/ranger.vim'
+Plugin 'vim-scripts/AutoComplPop'
 
 call vundle#end()
 
