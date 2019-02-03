@@ -2,7 +2,9 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/joseph/.oh-my-zsh
+export ZSH=/home/joseph/.oh-my-zsh
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # editor
 
@@ -14,6 +16,9 @@ export VISUAL='vim'
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 #ZSH_THEME="frisk"
+
+
+alias mkdir="mkdir -p -v"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random

@@ -6,12 +6,13 @@ syntax on
 set wrap
 set breakindent
 set breakindentopt=sbr
+set linebreak
 set showbreak=↪
 set tabstop=4 shiftwidth=4 smarttab " Tabs have a size of 4 and are inserted as TABS YOU HERECTICS
 set number
 set mouse= " Don't allow mouse
 set ruler " Display cursor
-set cursorline cursorcolumn
+set cursorline " cursorcolumn
 set hlsearch " Highlighted search results
 set showcmd " Display (partially) the command in the last line of the screen
 set cmdheight=1
@@ -26,6 +27,24 @@ set noshowmode " no status bar
 set scrolloff=8
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+
+" statusline
+set laststatus=2
+set statusline=\%1*
+set statusline+=\ %t
+set statusline+=\ %2*
+set statusline+=\ %3*
+set statusline+=\ %y
+set statusline+=\ %4*
+set statusline+=%=
+set statusline+=\%5*
+set statusline+=\ [%{mode()}]
+set statusline+=\ %6*
+set statusline+=\ %7*
+set statusline+=\ line\ %l\ of\ %L
+set statusline+=\  
 
 """"""""""""""""""""""""
 " Vundle configuration "
@@ -40,7 +59,7 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 """ plugins
 
-Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'vim-scripts/AutoComplPop'
 

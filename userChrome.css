@@ -6,14 +6,14 @@
     background-image: none!important;
 }
 .tab-text {
-	color: #fff!important;
+	color: var(--color7)!important;
 }
 .tab-background {
 	background-color: var(--color0)!important;
 	border-top-width: 0!important;
 }
 .tab-close-button {
-	color: #eee!important;
+	color: var(--color7)!important;
 }
 .tab-line[selected="true"] {
 	background-color: transparent!important; /* var(--color1)!important; */
@@ -28,23 +28,23 @@
 
 .searchbar-textbox {
 	background-color: var(--color0)!important;
-	color: #eee!important;
+	color: var(--color7)!important;
 }
 
 #nav-bar {
 	background-color: var(--color0)!important;
-	color: #eee!important;
+	color: var(--color7)!important;
 	background-attachment: none!important;
     background-image: none!important;
 }
 #urlbar {
 	background-color: var(--color0)!important;
-	color: #eee!important;
+	color: var(--color7)!important;
 }
 
 .browser-toolbar {
 	background-color: var(--color0)!important;
-	color: #eee!important;
+	color: var(--color7)!important;
 	background-attachment: none!important;
     background-image: none!important;
 }
@@ -58,4 +58,8 @@
 
 .tabs-newtab-button {
 	background-color: var(--color0)!important;
+}
+
+#contentAreaContextMenu {
+	margin: 5px 0 0 5px
 }
