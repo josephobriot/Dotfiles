@@ -89,7 +89,9 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 " Plugin 'itchyny/lightline.vim'
 Plugin 'francoiscabrol/ranger.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/AutoComplPop'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 
@@ -109,29 +111,21 @@ nmap <A-S-Left> :vertical resize -10<CR>
 nmap <A-S-Up> :resize +10<CR>
 nmap <A-S-Down> :resize -10<CR>
 
-" Alt nav to navigate
-nmap <silent> <A-k> :wincmd k<CR>
-nmap <silent> <A-j> :wincmd j<CR>
-nmap <silent> <A-h> :wincmd h<CR>
-nmap <silent> <A-l> :wincmd l<CR>
-
-" Alt shift nav to resize
-nmap <A-S-l> :vertical resize +10<CR>
-nmap <A-S-h> :vertical resize -10<CR>
-nmap <A-S-k> :resize +10<CR>
-nmap <A-S-j> :resize -10<CR>
-
 
 " line up or down
-nnoremap <C-A-Down> mz:m +1<CR>`z==
-nnoremap <C-A-Up> mz:m -2<CR>`z==
-inoremap <C-A-Down> <Esc>:m +1<CR>==gi
-inoremap <C-A-Up> <Esc>:m -2<CR>==gi
-vnoremap <C-A-Down> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vnoremap <C-A-Up> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+nnoremap <C-j> mz:m +1<CR>`z==
+nnoremap <C-k> mz:m -2<CR>`z==
+inoremap <C-j> <Esc>:m +1<CR>==gi
+inoremap <C-k> <Esc>:m -2<CR>==gi
+vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 
-autocmd ColorScheme * highlight Normal ctermfg=7 ctermbg=0
+
+
+
+
+autocmd ColorScheme * highlight Normal ctermbg=0
 autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0
 autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0
 autocmd ColorScheme * highlight LineNr ctermbg=0

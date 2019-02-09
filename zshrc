@@ -19,6 +19,7 @@ ZSH_THEME="robbyrussell"
 
 
 alias mkdir="mkdir -p -v"
+alias ra="ranger"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
