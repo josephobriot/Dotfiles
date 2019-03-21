@@ -91,7 +91,6 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'dylanaraps/fff.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/AutoComplPop'
 Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
@@ -99,7 +98,7 @@ call vundle#end()
 filetype plugin indent on " Restore filetype detection
 
 " Open fff on press of 'f'
-nnoremap f :F<CR>
+nnoremap , :F<CR>
 " Vertical split (NERDtree style).
 let g:fff#split = "30vnew"
 

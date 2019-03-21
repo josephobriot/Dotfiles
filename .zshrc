@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/joseph/.oh-my-zsh
@@ -20,6 +20,8 @@ ZSH_THEME="robbyrussell"
 
 alias mkdir="mkdir -p -v"
 alias ra="ranger"
+alias xq="xbps-query -Rs"
+alias xi="sudo xbps-install"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
