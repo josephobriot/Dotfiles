@@ -1,3 +1,4 @@
+#!/bin/bash
 # MUST BE PYWAL<=3.2.1 (removed gtk support for whatever reason)
 files=(~/Images/Wallpapers/papes/*)
 sh -c "wal -s -i ${files[RANDOM % ${#files[@]}]} -g"
