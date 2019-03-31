@@ -102,6 +102,8 @@ nnoremap , :F<CR>
 " Vertical split (NERDtree style).
 let g:fff#split = "30vnew"
 
+" ; to enter commands, so I don't need shift
+nmap ; :
 
 " Alt arrow to navigate
 nmap <silent> <A-Up> :wincmd k<CR>
