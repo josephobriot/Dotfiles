@@ -28,7 +28,8 @@ sxhkd &
 mpd &
 polybar -r default &
 redshift -c ~/.config/redshift/redshift.conf &
-compton --backend glx --paint-on-overlay --vsync opengl-swc & # fix tearing
+# compton --backend glx --paint-on-overlay --vsync opengl-swc & # fix tearing
+compton -CGb &
 nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
