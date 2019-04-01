@@ -19,6 +19,12 @@ super + d
 alt + Tab
 	rofi -show window
 
+super + shift + Tab
+	bash -c "bspc config window_gap 0; hey=\$(cat ~/.config/polybar/config | sed -e '/^;/d;/^\$/d' | sed -e ':a;N;\$!ba;s/\n/;/g;s/\[bar\/work\]/&\n/;s/.*\n//;s/\[.*\]/\n&/;s/\n.*//;s/;/\n/g' | sed -n '/height/p' | sed -e 's/height.*\=//' -e 's/^[ \t]*//'); bspc config top_padding \$hey; killall polybar; polybar -r work"
+
+super + Tab
+	bash -c "bspc config window_gap 15; hey=\$(cat ~/.config/polybar/config | sed -e '/^;/d;/^\$/d' | sed -e ':a;N;\$!ba;s/\n/;/g;s/\[bar\/default\]/&\n/;s/.*\n//;s/\[.*\]/\n&/;s/\n.*//;s/;/\n/g' | sed -n '/height/p' | sed -e 's/height.*\=//' -e 's/^[ \t]*//'); bspc config top_padding \$hey; killall polybar; polybar -r default"
+
 super + n
 	pcmanfm
 
@@ -93,8 +99,8 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+# super + {grave,Tab}
+# 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
