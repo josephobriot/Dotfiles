@@ -20,10 +20,10 @@ alt + Tab
 	rofi -show window
 
 super + shift + Tab
-	bash -c "bspc config window_gap 0; hey=\$(cat ~/.config/polybar/config | sed -e '/^;/d;/^\$/d' | sed -e ':a;N;\$!ba;s/\n/;/g;s/\[bar\/work\]/&\n/;s/.*\n//;s/\[.*\]/\n&/;s/\n.*//;s/;/\n/g' | sed -n '/height/p' | sed -e 's/height.*\=//' -e 's/^[ \t]*//'); bspc config top_padding \$hey; killall polybar; polybar -r work"
+	bash -c "~/.config/sxhkd/work.sh work 0"
 
 super + Tab
-	bash -c "bspc config window_gap 15; hey=\$(cat ~/.config/polybar/config | sed -e '/^;/d;/^\$/d' | sed -e ':a;N;\$!ba;s/\n/;/g;s/\[bar\/default\]/&\n/;s/.*\n//;s/\[.*\]/\n&/;s/\n.*//;s/;/\n/g' | sed -n '/height/p' | sed -e 's/height.*\=//' -e 's/^[ \t]*//'); bspc config top_padding \$hey; killall polybar; polybar -r default"
+	bash -c "~/.config/sxhkd/work.sh default 15"
 
 super + n
 	pcmanfm
