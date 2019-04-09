@@ -32,7 +32,8 @@ super + shift + n
 	st -e ranger
 
 Print
-	flameshot gui
+	bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
+	# flameshot gui
 	# shutter -s
 # make sxhkd reload its configuration files:
 super + Escape

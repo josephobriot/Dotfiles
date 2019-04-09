@@ -92,13 +92,16 @@ Plugin 'francoiscabrol/ranger.vim'
 Plugin 'dylanaraps/fff.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 
 filetype plugin indent on " Restore filetype detection
 
-" Open fff on press of 'f'
+" Open fff
 nnoremap , :F<CR>
+" Open fzf
+noremap . :FZF<CR>
 " Vertical split (NERDtree style).
 let g:fff#split = "30vnew"
 
