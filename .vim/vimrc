@@ -9,6 +9,7 @@ set breakindentopt=sbr
 set linebreak
 set showbreak=↪
 set tabstop=4 shiftwidth=4 smarttab " Tabs have a size of 4 and are inserted as TABS YOU HERECTICS
+set list lcs=tab:\|\ 
 set number
 set mouse= " Don't allow mouse
 set ruler " Display cursor
@@ -24,18 +25,18 @@ set noshowmode " no status bar
 set scrolloff=8
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
-set colorcolumn=80
+" set colorcolumn=80
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 
 function! ColorLine(mode)
-  if a:mode == 'i'
-    hi User5 ctermfg=7 ctermbg=27
-  elseif a:mode == 'r'
-    hi User5 ctermfg=7 ctermbg=124
-  else
-    hi User5 ctermfg=7 ctermbg=20
-  endif
+	if a:mode == 'i'
+		hi User5 ctermfg=7 ctermbg=27
+	elseif a:mode == 'r'
+		hi User5 ctermfg=7 ctermbg=124
+	else
+		hi User5 ctermfg=7 ctermbg=20
+	endif
 endfunction
 
 au InsertEnter * call ColorLine(v:insertmode)
@@ -72,31 +73,20 @@ set fillchars=vert:\|
 
 
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'francoiscabrol/ranger.vim'
+Plug 'dylanaraps/fff.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-rooter'
+
+call plug#end()
 
 
-""""""""""""""""""""""""
-" Vundle configuration "
-""""""""""""""""""""""""
-
-filetype off " Required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim " Load vundle
-
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
-
-""" plugins
-
-" Plugin 'itchyny/lightline.vim'
-Plugin 'francoiscabrol/ranger.vim'
-Plugin 'dylanaraps/fff.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'junegunn/fzf.vim'
-
-call vundle#end()
-
-filetype plugin indent on " Restore filetype detection
 
 " Open fff
 nnoremap , :F<CR>
@@ -144,14 +134,16 @@ autocmd ColorScheme * highlight User2 guibg=Black ctermfg=0 guifg=White ctermbg=
 autocmd ColorScheme * highlight User3 guibg=Black ctermfg=7 guifg=White ctermbg=27
 
 augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * set colorcolumn=80
-    autocmd WinLeave * set colorcolumn=0
+	autocmd!
+	" autocmd WinEnter * set colorcolumn=80
+	" autocmd WinLeave * set colorcolumn=0
 	autocmd WinEnter * set cul
-    autocmd WinLeave * set nocul
+	autocmd WinLeave * set nocul
 augroup END
 
-colorscheme mysticaltutor
+set background=dark
+colorscheme palenight
+" colorscheme mysticaltutor
 
 
 
