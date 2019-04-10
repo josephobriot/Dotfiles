@@ -94,6 +94,7 @@ let g:indentLine_char = '¦'
 nnoremap , :F<CR>
 " Open fzf
 noremap . :FZF<CR>
+let g:fzf_layout = { 'down': '~20%' }
 " Vertical split (NERDtree style).
 let g:fff#split = "30vnew"
 

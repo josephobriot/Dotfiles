@@ -60,7 +60,7 @@ font-2 = NotoSansCJKjp-Regular:size=13;1
 
 modules-left = bspwm xwindow
 modules-center =
-modules-right = mpd volume xbacklight battery0 battery1 date powermenu
+modules-right = mpd volume xbacklight battery0 battery1 date
 
 cursor-click = pointer
 cursor-scroll = ns-resize 
@@ -99,7 +99,7 @@ font-2 = NotoSansCJKjp-Regular:size=13;1
 
 modules-left = bspwm xwindow
 modules-center =
-modules-right = mpd volume xbacklight battery0 battery1 date powermenu
+modules-right = mpd volume xbacklight battery0 battery1 date
 
 cursor-click = pointer
 cursor-scroll = ns-resize 
