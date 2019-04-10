@@ -9,7 +9,7 @@ set breakindentopt=sbr
 set linebreak
 set showbreak=↪
 set tabstop=4 shiftwidth=4 smarttab " Tabs have a size of 4 and are inserted as TABS YOU HERECTICS
-set list lcs=tab:\|\ 
+set list lcs=tab:\│\ 
 set number
 set mouse= " Don't allow mouse
 set ruler " Display cursor
@@ -83,11 +83,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
 
 
+let g:indentLine_char = '│'
 " Open fff
 nnoremap , :F<CR>
 " Open fzf
@@ -97,6 +99,7 @@ let g:fff#split = "30vnew"
 
 " ; to enter commands, so I don't need shift
 nmap ; :
+vmap ; :
 
 " Alt arrow to navigate
 nmap <silent> <A-Up> :wincmd k<CR>
