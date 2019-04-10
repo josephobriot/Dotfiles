@@ -21,9 +21,7 @@
 	position: absolute;
 	height: 100%!important;
 	width: 100%!important;
-	border-right: 3px dotted var(--color1)!important;
-	border-bottom: 3px dotted var(--color1)!important;
-	border-left: 3px dotted var(--color1)!important;
+	border-bottom: 3px solid var(--color1)!important;
 }
 
 .searchbar-textbox {
@@ -79,29 +77,14 @@
   --tab-min-height: 29px;
 }
 
-:root[uidensity=compact][extradragspace]:not([sizemode="normal"]) #navigator-toolbox {
-  --nav-bar-height: 33px;
-  --tab-min-height: 21px;
-}
-
 :root:not([uidensity]) #navigator-toolbox {
   --nav-bar-height: 39px;
   --tab-min-height: 33px;
 }
 
-:root:not([uidensity])[extradragspace]:not([sizemode="normal"]) #navigator-toolbox {
-  --nav-bar-height: 39px;
-  --tab-min-height: 25px;
-}
-
 :root[uidensity=touch] #navigator-toolbox {
   --nav-bar-height: 41px;
   --tab-min-height: 41px;
-}
-
-:root[uidensity=touch][extradragspace]:not([sizemode="normal"]) #navigator-toolbox {
-  --nav-bar-height: 41px;
-  --tab-min-height: 33px;
 }
 
 #navigator-toolbox {
@@ -132,16 +115,18 @@
 :root:not([customizing]) #nav-bar
 {
   overflow-y: hidden;
-  max-height:0;
-  min-height:0 !important;
+  /*max-height:0;
+  min-height:0 !important;*/
   padding-top:0 !important;
   padding-bottom:0 !important;
   opacity: 0;
+  pointer-events: none;
 }
 
 :root:not([customizing]) :hover > #nav-bar,
 :root:not([customizing]) #nav-bar:focus-within {
-  max-height: var(--nav-bar-height);
+  /* max-height: var(--nav-bar-height); */
+  pointer-events: auto;
   opacity: 1;
 }
 
@@ -149,6 +134,9 @@
   max-height: calc(var(--tabbar-height) + var(--trigger-area-height));
   min-height: var(--tabbar-height);
   margin-bottom: calc(-1 * var(--trigger-area-height));
+}
+:root:not([customizing]) #navigator-toolbox::after {
+  border-bottom: 0px solid transparent!important;
 }
 
 :root:not([customizing]) #navigator-toolbox:hover,
@@ -159,14 +147,16 @@
 
 /* If the bookmarks bar is turned on, auto-hide that too */
 :root:not([customizing]) #PersonalToolbar {
-  max-height: 0 !important;
-  min-height: 0.1px !important;
+  /*max-height: 0 !important;
+  min-height: 0.1px !important;*/
+  pointer-events: none;
   opacity: 0;
 }
 
 :root:not([customizing]) :hover > #PersonalToolbar,
 :root:not([customizing]) #navigator-toolbox:focus-within #PersonalToolbar {
-  max-height: 4em !important;
+  /*max-height: 4em !important;*/
+  pointer-events: auto;
   opacity: 1;
 }
 
@@ -179,10 +169,16 @@
   background-repeat: var(--lwt-background-tiling) !important;
 }
 
+#main-window[sizemode="normal"]:-moz-lwtheme #nav-bar {
+    background-position-y: calc(-2px - var(--tabbar-height)) !important;
+}
+#main-window[sizemode="normal"]:-moz-lwtheme #PersonalToolbar {
+    background-position-y: calc(-2px - var(--tabbar-height) - var(--nav-bar-height)) !important;
+}
 
-#main-window:-moz-lwtheme #nav-bar {
+#main-window[sizemode="maximized"]:-moz-lwtheme #nav-bar {
     background-position-y: calc(-8px - var(--tabbar-height)) !important;
 }
-#main-window:-moz-lwtheme #PersonalToolbar {
+#main-window[sizemode="maximized"]:-moz-lwtheme #PersonalToolbar {
     background-position-y: calc(-8px - var(--tabbar-height) - var(--nav-bar-height)) !important;
 }
