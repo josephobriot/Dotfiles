@@ -6,26 +6,19 @@ then
 	files=(~/Images/Wallpapers/papes/*)
 	ar="${files[RANDOM % ${#files[@]}]}"
 else
-	arg=$1
-	if [ ${arg:0:1} == "/" ]
+	if [ ${1:0:1} == "/" ]
 	then
-		ar="$arg"
-		if [ -f "$ar" ]
-		then
-			echo "continuing"
-		else
-			echo "file does not exist, exiting..."
-			exit 0
-		fi
+		ar="$1"
 	else
-		ar="$(pwd)/$arg"
-		if [ -f "$ar" ]
-		then
-			echo "continuing"
-		else
-			echo "file does not exist, exiting..."
-			exit 0
-		fi
+		ar="$(pwd)/$1"
+	fi
+
+	if [ -f "$ar" ]
+	then
+		echo "continuing"
+	else
+		echo "file does not exist, exiting..."
+		exit 0
 	fi
 fi
 
@@ -33,7 +26,7 @@ echo $ar
 
 
 # MUST BE PYWAL<=3.2.1 (removed gtk support for whatever reason)
-sh -c "wal -s -i $ar -g"
+wal -s -i ${ar} -g
 wal-steam -w -d
 # -b \"#14161b\" 
 #  ^ = to set backround manually
