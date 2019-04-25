@@ -2,6 +2,7 @@
 "         BASE        "
 """""""""""""""""""""""
 syntax on
+filetype plugin indent on
 set nocompatible
 set wrap
 set breakindent
@@ -27,8 +28,6 @@ set scrolloff=8
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
 " set colorcolumn=80
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
 
 function! ColorLine(mode)
 	if a:mode == 'i'
@@ -85,6 +84,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/indentLine'
+Plug 'machakann/vim-highlightedyank'
+Plug 'rbong/vim-flog'
+Plug 'pseewald/vim-anyfold'
 
 call plug#end()
 
@@ -128,6 +130,8 @@ vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 
+autocmd Filetype * AnyFoldActivate
+set foldlevel=99
 
 
 " Jump to the last position when reopening a file
@@ -140,6 +144,7 @@ autocmd ColorScheme * highlight Normal ctermbg=0
 autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0
 autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0
 autocmd ColorScheme * highlight LineNr ctermbg=0
+autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236
 
 autocmd ColorScheme * highlight User5 guibg=Black ctermfg=14 guifg=White ctermbg=0
 autocmd ColorScheme * highlight User2 guibg=Black ctermfg=0 guifg=White ctermbg=79
