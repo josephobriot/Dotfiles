@@ -87,6 +87,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rbong/vim-flog'
 Plug 'pseewald/vim-anyfold'
+Plug 'RRethy/vim-illuminate'
 
 call plug#end()
 
