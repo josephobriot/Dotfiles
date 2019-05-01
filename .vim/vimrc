@@ -20,9 +20,8 @@ set hlsearch " Highlighted search results
 set showcmd " Display (partially) the command in the last line of the screen
 set cmdheight=1
 set backspace=indent,eol,start " Backspacing over every character in insert mode
-set autoindent " auto indent
-set smartindent
-set ignorecase " Smart search
+set autoindent
+set ignorecase
 set noshowmode " no status bar
 set scrolloff=8
 set splitbelow splitright
@@ -88,7 +87,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'rbong/vim-flog'
 Plug 'pseewald/vim-anyfold'
 Plug 'RRethy/vim-illuminate'
-Plug 'josephobriot/vim-cursorline'
+Plug 'josephobriot/vim-cursorlight'
 
 call plug#end()
 
