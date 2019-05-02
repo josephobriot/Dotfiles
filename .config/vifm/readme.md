@@ -1,6 +1,7 @@
 # Vifm config
 
-ueberzug for image preview, vifm needs to be launched via the script ~/.local/bin/vifmrun, you can alias it to vifm
+ueberzug for image preview, vifm needs to be launched via the script ~/.local/bin/vifmrun, you can alias it to vifm  
+This is the [cirala/vifmimg](https://github.com/cirala/vifmimg) script
 
 shortcuts :
 + `S` - open shell in directory
