@@ -1,5 +1,6 @@
 set syscalls
 set sortnumbers
+set sort=iname
 set number
 set wildmenu
 set wildstyle=popup
@@ -47,7 +48,7 @@ nnoremap w <c-w>z:if layoutis('only') | vsplit | view | else | only | endif<cr>
 " %d the current directory name.
 " %D the other window directory name.
 " %m run the command in a menu window
-command du du -sch %d/* | less
+command du du -sch %d/* %m
 noremap du :du<cr>
 command openxdg xdg-open %f 2> /dev/null &
 noremap o :openxdg<cr>
