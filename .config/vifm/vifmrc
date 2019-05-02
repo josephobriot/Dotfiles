@@ -63,6 +63,8 @@ noremap O :openwith<space>
 command openvim vim %f
 noremap x :openvim<cr>
 
+noremap , :!sh -c "if file %c | grep -i ascii; then vim %c; else xdg-open %c; fi"
+
 
 mark i /run/media
 mark h ~/
@@ -244,6 +246,8 @@ filextype *.pro qtcreator %f &
 
 
 filetype *
+        \ {filetype script by default}
+        \ sh -c "if file %c --mime-type | grep -i text; then vim %c; else xdg-open %c; fi",
         \ {XDG by default}
         \ xdg-open %f %i,
 
