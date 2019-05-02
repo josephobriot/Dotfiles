@@ -1,6 +1,7 @@
 set syscalls
 set sortnumbers
 set sort=iname
+set dirsize=nitems
 set number
 set wildmenu
 set wildstyle=popup
