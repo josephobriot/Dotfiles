@@ -9,22 +9,27 @@ set ignorecase
 set smartcase
 set scrolloff=4
 set trash
+set dotdirs=rootparent
+set tuioptions="psu"
 
 " set fillchars=vborder:'│'
-set milleroptions=lsize:3,csize:8,rsize:0
+set milleroptions=lsize:4,csize:8,rsize:0
 set millerview
 
-set statusline='  %t%= %A %10u:%-7g %15E %20d  '
+" set statusline='  %t%= %A %10u:%-7g %15E %20d  '
+highlight User1 ctermfg=14
+highlight User2 ctermfg=214
+set statusline='%1* %A %2*|%0* %u:%g %2*|%0* %t %= %2*|%0* %a free %2*|%0* %d'
 
 only
 
 nmap S :shell<cr>
 
 " Yank current directory path into the clipboard
-nmap yd :!echo %d | xclip %i<cr>
+nmap yd :!echo %d | xclip -selection clipboard %i<cr>
 
 " Yank current file path into the clipboard
-nmap yf :!echo %c:p | xclip %i<cr>
+nmap yf :!echo %c:p | xclip -selection clipboard %i<cr>
 
 " Mappings for faster renaming
 nmap I cw<c-a>
@@ -51,8 +56,8 @@ nnoremap w <c-w>z:if layoutis('only') | vsplit | view | else | only | endif<cr>
 " %m run the command in a menu window
 command du du -sch %d/* %m
 noremap du :du<cr>
-command openxdg xdg-open %f 2> /dev/null &
-noremap o :openxdg<cr>
+command openxdg xdg-open %f %i
+noremap o :f<cr>
 command openwith %a %f
 noremap O :openwith<space>
 command openvim vim %f
@@ -63,12 +68,14 @@ mark i /run/media
 mark h ~/
 noremap gi 'i
 noremap gh 'h
+noremap g/ :cd /<cr>
 
 
 highlight Border cterm=none ctermfg=7 ctermbg=0
-highlight TopLine cterm=none ctermfg=7 ctermbg=0
-highlight TopLineSel cterm=none ctermfg=7 ctermbg=0
+highlight TopLine cterm=none ctermfg=2 ctermbg=0
+highlight TopLineSel cterm=none ctermfg=2 ctermbg=0
 highlight StatusLine cterm=none ctermfg=7 ctermbg=0
+highlight Directory cterm=none ctermfg=4 ctermbg=default
 
 
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.gif
@@ -127,7 +134,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in ahoviewer}
-        \ ahoviewer %f,
+        \ ahoviewer %f %i,
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
@@ -238,7 +245,7 @@ filextype *.pro qtcreator %f &
 
 filetype *
         \ {XDG by default}
-        \ xdg-open %f,
+        \ xdg-open %f %i,
 
 
 
@@ -252,7 +259,7 @@ filetype *
 " https://github.com/cirala/vifm_devicons
 "
 " Filetypes/directories
-set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
+set classify=' :dir:, :exe:, :reg:, :link:,? :?:, ::../::'
 
 " Specific files
 set classify+=' ::.Xdefaults,,.Xresources,,.bashprofile,,.bash_profile,,.bashrc,,.dmrc,,.d_store,,.fasd,,.gitconfig,,.gitignore,,.jack-settings,,.mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,.recently-used,,.selected_editor,,.xinitpurc,,.zprofile,,.yarnc,,.snclirc,,.tmux.conf,,.urlview,,.config,,.ini,,.user-dirs.dirs,,.mimeapps.list,,.offlineimaprc,,.msmtprc,,.Xauthority,,config::'
