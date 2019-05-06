@@ -27,6 +27,7 @@ set scrolloff=8
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
 " set colorcolumn=80
+autocmd BufEnter * :syntax sync fromstart
 
 function! ColorLine(mode)
 	if a:mode == 'i'
