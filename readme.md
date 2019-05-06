@@ -10,5 +10,5 @@ pape script (in .local/bin) can be used with a wallpaper as first argument to lo
 
 ![img](scrot_2.png)
 
-
+![img](scrot_3.png)
 
