@@ -26,7 +26,7 @@ echo $ar
 
 
 # MUST BE PYWAL<=3.2.1 (removed gtk support for whatever reason)
-wal -l -s -i ${ar} -g
+wal -s -i ${ar} -g
 wal-steam -w -d
 # -b \"#14161b\" 
 #  ^ = to set backround manually

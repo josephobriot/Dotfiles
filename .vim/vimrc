@@ -10,7 +10,7 @@ set breakindentopt=sbr
 set linebreak
 set showbreak=↪
 set display+=lastline
-set tabstop=4 shiftwidth=4 smarttab " Tabs have a size of 4 and are inserted as TABS YOU HERECTICS
+set tabstop=4 expandtab shiftwidth=4 smarttab
 set list lcs=tab:\│\ 
 set number
 set mouse= " Don't allow mouse
