@@ -163,8 +163,7 @@ augroup BgHighlight
 augroup END
 
 set background=dark
-colorscheme papercolor
-" colorscheme palenight
+colorscheme palenight
 " colorscheme mysticaltutor
 
 
