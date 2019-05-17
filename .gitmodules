@@ -1,0 +1,6 @@
+[submodule "ext_scripts/splatmoji"]
+	path = .ext_scripts/splatmoji
+	url = https://github.com/cspeterson/splatmoji.git
+[submodule ".ext_scripts/splatmoji"]
+	path = .ext_scripts/splatmoji
+	url = https://github.com/cspeterson/splatmoji.git

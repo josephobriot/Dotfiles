@@ -31,6 +31,9 @@ super + n
 super + shift + n
 	st -e ranger
 
+super + v
+    splatmoji copy
+
 Print
 	bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
 	# flameshot gui
