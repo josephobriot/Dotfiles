@@ -1,0 +1,13 @@
+.*/readme.md
+
+\.ext_scripts
+
+\.git
+
+userChrome\.css
+
+\.gitmodules
+
+scrot.*
+
+lock\.sh
