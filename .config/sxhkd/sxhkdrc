@@ -11,13 +11,13 @@ super + shift + Return
 
 # program launcher
 super + d
-	rofi -show drun
+	rofi -show drun -modi window,drun,ssh -sidebar-mode
 #super + @space
 #	dmenu_run
 
 # window switcher
 alt + Tab
-	rofi -show window
+	rofi -show window -modi window,drun,ssh -sidebar-mode
 
 super + shift + Tab
 	bash -c "~/.config/sxhkd/work.sh work 0"
