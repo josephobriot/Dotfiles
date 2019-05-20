@@ -87,8 +87,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rbong/vim-flog'
 Plug 'pseewald/vim-anyfold'
-Plug 'RRethy/vim-illuminate'
+" Plug 'RRethy/vim-illuminate'
 Plug 'josephobriot/vim-cursorlight'
+Plug 'idanarye/vim-dutyl'
 
 call plug#end()
 
@@ -152,7 +153,9 @@ autocmd ColorScheme * highlight User5 guibg=Black ctermfg=14 guifg=White ctermbg
 autocmd ColorScheme * highlight User2 guibg=Black ctermfg=0 guifg=White ctermbg=79
 autocmd ColorScheme * highlight User3 guibg=Black ctermfg=7 guifg=White ctermbg=27
 
-let g:CursorLightenFactor = 40
+autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
+
+let g:CursorLightenFactor = 30
 
 augroup BgHighlight
 	autocmd!
