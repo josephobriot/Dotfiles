@@ -23,7 +23,8 @@
    blackselect:      @maincolor;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "DejaVu Sans Mono Regular 14";
+   /*font: "DejaVu Sans Mono Regular 14";*/
+   font: "OpenSans Regular 14";
    background-color: @blackdarkest;
 }}
 
@@ -61,7 +62,7 @@ listview {{
 }}
 
 element {{
-   padding: 2px 15px;
+   padding: 5px 15px;
 }}
 
 element normal.normal {{
@@ -117,12 +118,15 @@ scrollbar {{
 }}
 
 sidebar {{
-   background-color: @blackwidget;
+   /*background-color: @blackwidget;*/
+   background-color: @maincolor;
+   padding: 2px;
 }}
 
 button {{
    background-color: @blackwidget;
    text-color:       @darkgray;
+   padding: 3px;
 }}
 
 button selected {{
