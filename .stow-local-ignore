@@ -11,3 +11,5 @@ userChrome\.css
 scrot.*
 
 lock\.sh
+
+install\.sh

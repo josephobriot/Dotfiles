@@ -143,15 +143,15 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-autocmd ColorScheme * highlight Normal ctermbg=0
-autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0
-autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0
-autocmd ColorScheme * highlight LineNr ctermbg=0
-autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236
+autocmd ColorScheme * highlight Normal ctermbg=0 guibg=NONE
+autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
+autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
+autocmd ColorScheme * highlight LineNr ctermbg=0 guibg=NONE
+autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
 
-autocmd ColorScheme * highlight User5 guibg=Black ctermfg=14 guifg=White ctermbg=0
-autocmd ColorScheme * highlight User2 guibg=Black ctermfg=0 guifg=White ctermbg=79
-autocmd ColorScheme * highlight User3 guibg=Black ctermfg=7 guifg=White ctermbg=27
+autocmd ColorScheme * highlight User5 guibg=NONE ctermfg=14 guifg=NONE ctermbg=0
+autocmd ColorScheme * highlight User2 guibg=NONE ctermfg=0 guifg=NONE ctermbg=79
+autocmd ColorScheme * highlight User3 guibg=NONE ctermfg=7 guifg=NONE ctermbg=27
 
 autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
 

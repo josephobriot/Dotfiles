@@ -4,8 +4,9 @@ nothing original
 
 ## Install
 
+require stow
 ```sh
-stow ./ -t ~ -v
+./install.sh
 ```
 
 pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup
