@@ -87,14 +87,17 @@ Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rbong/vim-flog'
 Plug 'pseewald/vim-anyfold'
-" Plug 'RRethy/vim-illuminate'
 Plug 'josephobriot/vim-cursorlight'
 Plug 'idanarye/vim-dutyl'
+Plug 'rhysd/clever-f.vim'
+Plug 'machakann/vim-sandwich'
+Plug 'christoomey/vim-system-copy'
 
 call plug#end()
 
 
 
+let g:clever_f_across_no_line = 1
 let g:indentLine_char = '¦'
 " Open fff
 nnoremap , :F<CR>
@@ -154,8 +157,9 @@ autocmd ColorScheme * highlight User2 guibg=NONE ctermfg=0 guifg=NONE ctermbg=79
 autocmd ColorScheme * highlight User3 guibg=NONE ctermfg=7 guifg=NONE ctermbg=27
 
 autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
+autocmd ColorScheme * highlight Search ctermbg=242 ctermfg=196
 
-let g:CursorLightenFactor = 30
+let g:CursorLightenFactor = 50
 
 augroup BgHighlight
 	autocmd!
