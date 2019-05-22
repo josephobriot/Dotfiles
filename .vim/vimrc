@@ -149,7 +149,8 @@ endif
 autocmd ColorScheme * highlight Normal ctermbg=0 guibg=NONE
 autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
 autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
-autocmd ColorScheme * highlight LineNr ctermbg=0 guibg=NONE
+autocmd ColorScheme * highlight LineNr ctermbg=0 ctermfg=238 guibg=NONE
+autocmd ColorScheme * highlight CursorLineNr ctermbg=0 ctermfg=248 guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
 
 autocmd ColorScheme * highlight User5 guibg=NONE ctermfg=14 guifg=NONE ctermbg=0
@@ -170,8 +171,9 @@ augroup BgHighlight
 augroup END
 
 set background=dark
-colorscheme palenight
+" colorscheme palenight
 " colorscheme mysticaltutor
+colorscheme kuroi
 
 
 
