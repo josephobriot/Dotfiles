@@ -8,7 +8,7 @@ while read -r event ; do
             focusedTag="$(herbstclient attr tags.focus.name)"
             clientCount="$(herbstclient attr tags.by-name.fl.client_count)"
 
-            if [[ $clientCount -eq 0 && "$focusedTag" == "fl" ]] ; then
+            if [[ $clientCount -eq 0 && "$focusedTag" == "▲" ]] ; then
                 echo switch now ${focus[@]}
                 for (( idx=${#focus[@]}-2 ; idx>=0 ; idx-- )) ; do
                     client=$(echo "${focus[$idx]}")

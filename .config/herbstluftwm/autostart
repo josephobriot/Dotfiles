@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+floatingMonitorName=floatmon
+floatingTagName=▲
+
 hc() {
     herbstclient "$@"
 }
@@ -17,6 +20,10 @@ if hc silent ! get_attr my_not_first_autostart ; then
     source $HOME/.config/herbstluftwm/appears
 
     source $HOME/.config/herbstluftwm/init
+
+    echo "Setting up floating tag"
+    source ~/.config/herbstluftwm/scripts/floatmon.sh
+    $HOME/.config/herbstluftwm/scripts/floatingFocusFix.sh &
 
 fi
 

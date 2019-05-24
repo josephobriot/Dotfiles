@@ -26,7 +26,7 @@ herbstclient --idle "tag_*" 2>/dev/null | {
                     '-')
                         # - the tag is viewed on a monitor that is not focused
                         # TODO Add your formatting tags for visible but not focused workspaces
-                        ;;
+                        echo "%{F$color8}";;
                     *)
                         # . the tag is empty
                         # There are also other possible prefixes but they won't appear here

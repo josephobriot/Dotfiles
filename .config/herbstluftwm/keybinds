@@ -37,7 +37,7 @@ hc keybind $Mod-u       split   bottom  0.5
 hc keybind $Mod-o       split   right   0.5
 
 # let the current frame explode into subframes
-hc keybind $Mod-Control-space split explode
+hc keybind $Mod-x split explode
 
 # resizing frames
 resizestep=0.05
@@ -45,10 +45,11 @@ hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
 hc keybind $Mod-Control-k       resize up +$resizestep
 hc keybind $Mod-Control-l       resize right +$resizestep
-hc keybind $Mod-Control-Left    resize right -$resizestep
-hc keybind $Mod-Control-Down    resize up -$resizestep
-hc keybind $Mod-Control-Up      resize bottom -$resizestep
-hc keybind $Mod-Control-Right   resize left -$resizestep
+
+hc keybind $Mod-Control-Left    spawn ~/.config/herbstluftwm/scripts/windowsize.sh 0 -50
+hc keybind $Mod-Control-Down    spawn ~/.config/herbstluftwm/scripts/windowsize.sh -50 0
+hc keybind $Mod-Control-Up      spawn ~/.config/herbstluftwm/scripts/windowsize.sh 50 0
+hc keybind $Mod-Control-Right   spawn ~/.config/herbstluftwm/scripts/windowsize.sh 0 50
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
@@ -89,4 +90,6 @@ hc keybind $Mod-i jumpto urgent
 
 hc keybind $Mod-Tab spawn ~/.config/herbstluftwm/scripts/herbwork.sh herbdefault 15
 hc keybind $Mod-Shift-Tab spawn ~/.config/herbstluftwm/scripts/herbwork.sh herbwork 0
+
+hc keybind Print spawn bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
 
