@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+
+source $HOME/.config/herbstluftwm/keybinds
+
+source $HOME/.config/herbstluftwm/rules
+
+source $HOME/.config/herbstluftwm/workspaces
+
+if hc silent ! get_attr my_not_first_autostart ; then
+
+    source $HOME/.config/herbstluftwm/appears
+
+    source $HOME/.config/herbstluftwm/init
+
+fi
+
+hc silent new_attr bool my_not_first_autostart
+
+# unlock, just to be sure
+hc unlock
+
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+# hc detect_monitors

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+xrdb .Xresources
+
+xset r rate 250 30
+setxkbmap us -option compose:ralt
+
+killall redshift compton dunst polybar
+
+redshift -P -c ~/.config/redshift/redshift.conf &
+compton -CGb &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+hc spawn feh --bg-fill ~/Images/Wallpapers/papes/17.jpg # fallback
+hc spawn ~/.local/bin/pape
+
+hc spawn ~/.config/herbstluftwm/scripts/herbwork.sh herbdefault 15

@@ -1,11 +1,3 @@
-;=====================================================
-;
-;
-;    JOSEPH OBRIOT POLYBAR SUPER ORIGINAL CONFIG
-;
-;
-;=====================================================
-
 [colors]
 
 ; Used colors
@@ -67,7 +59,7 @@ cursor-scroll = ns-resize
 
 wm-restack = bspwm
 
-[bar/work]
+[bar/herbdefault]
 
 ; Basic settings
 monitor = eDP-1
@@ -76,6 +68,43 @@ height = 40
 
 ; Centered modules are in the true center of the bar
 fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 15
+border-color = #00000000
+border-bottom = 0
+
+padding-left = 3
+padding-right = 3
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = OpenSans-Regular:pixelsize=13;1
+font-1 = forkawesome:size=13;1
+font-2 = NotoSansCJKjp-Regular:size=13;1
+
+modules-left = herbspaces xwindow
+modules-center =
+modules-right = mpd volume xbacklight battery0 battery1 date
+
+cursor-click = pointer
+cursor-scroll = ns-resize 
+
+[bar/work]
+
+; Basic settings
+monitor = eDP-1
+width = 100%
+height = 40
+
+fixed-center = true
+; Centered modules are in the true center of the bar
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -106,9 +135,54 @@ cursor-scroll = ns-resize
 
 wm-restack = bspwm
 
+[bar/herbwork]
+
+; Basic settings
+monitor = eDP-1
+width = 100%
+height = 40
+
+; Centered modules are in the true center of the bar
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+border-bottom = 0
+
+padding-left = 3
+padding-right = 3
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = OpenSans-Regular:pixelsize=13;1
+font-1 = forkawesome:size=13;1
+font-2 = NotoSansCJKjp-Regular:size=13;1
+
+modules-left = herbspaces xwindow
+modules-center =
+modules-right = mpd volume xbacklight battery0 battery1 date
+
+cursor-click = pointer
+cursor-scroll = ns-resize 
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:100:...%
+
+
+[module/herbspaces]
+type = custom/script
+exec = ~/.config/herbstluftwm/scripts/herbspaces
+tail = true
+label-focused-overline = ${colors.primary}
+
 
 [module/bspwm]
 type = internal/bspwm
