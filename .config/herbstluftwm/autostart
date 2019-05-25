@@ -21,6 +21,8 @@ if hc silent ! get_attr my_not_first_autostart ; then
 
     source $HOME/.config/herbstluftwm/init
 
+    $HOME/.config/herbstluftwm/scripts/frameshow.sh &
+
     echo "Setting up floating tag"
     source ~/.config/herbstluftwm/scripts/floatmon.sh
     $HOME/.config/herbstluftwm/scripts/floatingFocusFix.sh &

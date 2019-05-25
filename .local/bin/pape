@@ -46,6 +46,8 @@ elif [ $(wmctrl -m | grep Name | cut -d: -f2) == "herbstluftwm" ]
 then
     herbstclient attr theme.normal.color "$color0"
     herbstclient attr theme.active.color "$color1"
+    herbstclient attr theme.minimal.normal.color "$color0"
+    herbstclient attr theme.minimal.active.color "$color1"
     herbstclient set frame_border_normal_color "$color0"
     herbstclient set frame_border_active_color "$color1"
 fi

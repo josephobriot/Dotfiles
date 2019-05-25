@@ -33,8 +33,8 @@ hc keybind $Mod-Shift-l     shift right
 
 # splitting frames
 # create an empty frame at the specified direction
-hc keybind $Mod-u       split   bottom  0.5
-hc keybind $Mod-o       split   right   0.5
+hc keybind $Mod-u       spawn sh -c "herbstclient split   bottom  0.5; herbstclient emit_hook changed"
+hc keybind $Mod-o       spawn sh -c "herbstclient split   right   0.5; herbstclient emit_hook changed"
 
 # let the current frame explode into subframes
 hc keybind $Mod-x split explode
@@ -65,7 +65,7 @@ hc keybind $Mod-p pseudotile toggle
 hc keybind $Mod-d spawn rofi -show drun -modi window,drun,ssh -sidebar-mode
 hc keybind Mod1-Tab spawn rofi -show window -modi window,drun,ssh -sidebar-mode
 hc keybind $Mod-n spawn pcmanfm
-hc keybind $Mod-z close
+hc keybind $Mod-z spawn sh -c "herbstclient close; herbstclient emit_hook changed"
 
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
@@ -91,5 +91,6 @@ hc keybind $Mod-i jumpto urgent
 hc keybind $Mod-Tab spawn ~/.config/herbstluftwm/scripts/herbwork.sh herbdefault 15
 hc keybind $Mod-Shift-Tab spawn ~/.config/herbstluftwm/scripts/herbwork.sh herbwork 0
 
-hc keybind Print spawn bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
+hc keybind $Mod-v spawn ~/.local/bin/splatmoji copy
 
+hc keybind Print spawn bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
