@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-Floatkey=${Floatkey:-Control-space}
+Floatkey=${Floatkey:-Alt-space}
 
 hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
 
@@ -27,6 +27,7 @@ hc or , add_monitor "$size"+0+0 "$floatingTagName" "$floatingMonitorName" \
 hc raise_monitor "$floatingMonitorName"
 hc lock_tag "$floatingMonitorName"
 
+# doesn't work cuz don't have the script, don't need it but I keep it dead here
 cmd=(
 or  case: and
         # if not on floating monitor
@@ -35,7 +36,7 @@ or  case: and
         . get_attr clients.focus.winid
         # and then move the client to the floating tag
         . substitute WINDOW clients.focus.winid
-            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToFloatingMonitor.sh WINDOW
+            spawn $HOME/.config/herbstluftwm/scripts/shiftWindowToFloatingMonitor.sh WINDOW
         . true
     case: and
         # if on the floating monitor
@@ -44,7 +45,7 @@ or  case: and
         . get_attr clients.focus.winid
         # then send it back to the original monitor
         . substitute WINDOW clients.focus.winid 
-            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToItsMonitor.sh WINDOW
+            spawn $HOME/.config/herbstluftwm/scripts/shiftWindowToItsMonitor.sh WINDOW
         . true
     case: and
         # if the previous things fail,

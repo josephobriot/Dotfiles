@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-color=$(herbstclient attr theme.active.color)
-
 while read -r event ; do
     case $event in
         focus_changed*|tag_changed*|changed*)
@@ -11,8 +9,13 @@ while read -r event ; do
             if [ $client -eq 0 ]
             then
                 herbstclient set frame_border_width 3
+                herbstclient set frame_padding 0
             else
                 herbstclient set frame_border_width 0
+                if [ $frames -gt 1 ]
+                then
+                    herbstclient set frame_padding 3
+                fi
             fi
 
             if [ $clients -eq 1 -a $frames -eq 1 ]

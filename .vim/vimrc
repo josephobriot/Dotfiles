@@ -76,7 +76,7 @@ set fillchars=vert:\|
 call plug#begin('~/.vim/plugged')
 
 Plug 'dylanaraps/fff.vim'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -91,6 +91,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'christoomey/vim-system-copy'
 Plug 'wellle/targets.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 

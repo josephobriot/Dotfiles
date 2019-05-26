@@ -43,10 +43,3 @@ rofi.columns: 2
 st.termname: xterm-256color
 st.font: Hack:pixelsize=20
 st.opacity: 255
-
-URxvt.scrollstyle: plain
-URxvt.scrollBar: false
-URxvt.font: xft:Hack:pixelsize=20, xft:unifont:style=Medium:antialias=false
-URxvt.internalBorder: 15
-URxvt*skipBuiltingGlyphs: false
-URxvt.letterSpace: 1
