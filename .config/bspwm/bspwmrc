@@ -27,7 +27,7 @@ killall -9 sxhkd redshift compton dunst polybar mpd
 sxhkd &
 mpd &
 polybar -r default &
-redshift -c ~/.config/redshift/redshift.conf &
+redshift -P -c ~/.config/redshift/redshift.conf &
 # compton --backend glx --paint-on-overlay --vsync opengl-swc & # fix tearing
 compton -CGb &
 nm-applet &
