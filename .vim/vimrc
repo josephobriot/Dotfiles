@@ -23,7 +23,8 @@ set backspace=indent,eol,start " Backspacing over every character in insert mode
 set autoindent
 set ignorecase
 set noshowmode " no status bar
-set scrolloff=8
+"set scrolloff=8
+set scrolloff=999
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
 " set colorcolumn=80
@@ -76,7 +77,7 @@ set fillchars=vert:\|
 call plug#begin('~/.vim/plugged')
 
 Plug 'dylanaraps/fff.vim'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -96,6 +97,8 @@ Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 
+
+let g:polyglot_disabled = ['markdown']
 
 let g:clever_f_across_no_line = 1
 let g:indentLine_char = '¦'

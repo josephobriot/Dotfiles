@@ -90,6 +90,14 @@ fileviewer <image/*>
         \ %pc
         \ ~/.config/vifm/scripts/vifmimg clear
 
+fileviewer *.pdf
+        \ ~/.config/vifm/scripts/vifmimg pdfpreview %px %py %pw %ph %c
+        \ %pc
+        \ ~/.config/vifm/scripts/vifmimg clear
+
+map > :!~/.config/vifm/scripts/vifmimg inc<CR>
+map < :!~/.config/vifm/scripts/vifmimg dec<CR>
+
 fileviewer *.ico
         \ ~/.config/vifm/scripts/vifmimg magickpreview %px %py %pw %ph %c
         \ %pc
