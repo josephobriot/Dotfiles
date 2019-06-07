@@ -29,7 +29,7 @@ super + n
 	pcmanfm
 
 super + shift + n
-	st -e ranger
+	st -e ~/.local/bin/vifmrun
 
 super + v
     splatmoji copy

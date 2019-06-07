@@ -7,7 +7,7 @@
 /* global settings and color variables */
 * {{
    /*maincolor:        #ed8712;*/
-   maincolor:        {color2};
+   maincolor:        {color1};
    /*highlight:        bold #ed8712;*/
    highlight:        bold {color7};
    urgentcolor:      #e53714;
