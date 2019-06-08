@@ -41,5 +41,7 @@ rofi.columns: 2
 *.color15:      #ffffff
 
 st.termname: xterm-256color
-st.font: Hack:pixelsize=20
+st.borderpx: 25
+st.font: Hack:pixelsize=18
+st.bold_font: 1
 st.opacity: 255
