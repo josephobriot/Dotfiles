@@ -43,5 +43,6 @@ rofi.columns: 2
 st.termname: xterm-256color
 st.borderpx: 25
 st.font: Hack:pixelsize=18
-st.bold_font: 1
-st.opacity: 255
+! st background, to use with my st fork
+! 256 to use *.background
+st.fxbackground: 0

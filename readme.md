@@ -9,7 +9,7 @@ require stow
 ./install.sh
 ```
 
-I use [xst](https://github.com/gnotclub/xst) now instead of my sucky patch I did a while back...
+I use a [patched st](https://github.com/josephobriot/st_custom)
 
 
 pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup
