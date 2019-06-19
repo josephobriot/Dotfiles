@@ -76,12 +76,12 @@ set fillchars=vert:\|
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'itchyny/lightline.vim'
 Plug 'dylanaraps/fff.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rbong/vim-flog'
@@ -89,14 +89,24 @@ Plug 'pseewald/vim-anyfold'
 Plug 'josephobriot/vim-cursorlight'
 Plug 'idanarye/vim-dutyl'
 Plug 'rhysd/clever-f.vim'
+Plug 'Raimondi/delimitMate'
 Plug 'machakann/vim-sandwich'
 Plug 'christoomey/vim-system-copy'
 Plug 'wellle/targets.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'ciaranm/detectindent'
 
 call plug#end()
 
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
+let delimitMate_expand_cr = 2
+let delimitMate_expand_space = 1
+let g:detectindent_preferred_indent = 4
+let g:detectindent_preferred_when_mixed = 1
+autocmd BufEnter * DetectIndent
 
 let g:polyglot_disabled = ['markdown']
 
@@ -116,6 +126,11 @@ vmap ; :
 
 nnoremap k gk
 nnoremap j gj
+
+" space open/close folds in normal mode
+nnoremap <space> za
+" space create folds in visual mode
+vnoremap <space> zf
 
 " Alt arrow to navigate
 nmap <silent> <A-Up> :wincmd k<CR>

@@ -80,6 +80,7 @@ highlight TopLineSel cterm=none ctermfg=2 ctermbg=0
 highlight StatusLine cterm=none ctermfg=7 ctermbg=0
 highlight Directory cterm=none ctermfg=4 ctermbg=default
 highlight Link cterm=none ctermfg=14 ctermbg=default
+highlight Executable cterm=none ctermfg=green ctermbg=none
 
 highlight <image/*> cterm=none ctermfg=3 ctermbg=default
 highlight <video/*> cterm=none ctermfg=13 ctermbg=default
@@ -114,13 +115,14 @@ fileviewer <text/*>
 fileviewer *
         \ echo "no preview"
 
+filextype *.m4a
+        \ {Play with mpv}
+        \ mpv %f --no-audio-display,
+
 filextype <video/*>
         \ {Play with mpv}
         \ mpv %f --no-terminal &,
 
-filextype <audio/*>
-        \ {Play with mpv}
-        \ mpv %f --no-audio-display,
 
 filextype <text/*>
         \ {Edit with vim}
@@ -284,8 +286,6 @@ filextype <text/*>
 filetype *
         \ {filetype script by default}
         \ rifle %f,
-        \ {filetype script by default}
-        \ sh -c "if file %c --mime-type | grep -i text; then vim %c; else xdg-open %c; fi",
         \ {XDG by default}
         \ xdg-open %f %i,
 
