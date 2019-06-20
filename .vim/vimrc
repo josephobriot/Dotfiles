@@ -130,7 +130,7 @@ nnoremap j gj
 " space open/close folds in normal mode
 nnoremap <space> za
 " space create folds in visual mode
-vnoremap <space> zf
+vnoremap <space> <ESC>:set foldmethod=manual<CR>gvzf
 
 " Alt arrow to navigate
 nmap <silent> <A-Up> :wincmd k<CR>
