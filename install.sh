@@ -8,4 +8,6 @@ mkdir ~/.mpd
 
 mkdir ~/.config
 
+mkdir -p ~/.local/share/applications
+
 stow ./ -t ~ -v

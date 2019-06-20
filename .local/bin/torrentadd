@@ -1,0 +1,61 @@
+#!/bin/sh
+
+if ! pgrep -x transmission-da>/dev/null
+then
+	transmission-daemon
+	notify-send "Starting transmission-daemon"
+	sleep 3
+fi
+
+magn=$@
+
+. $HOME/.config/torrent-dirs/dirs
+
+echo "Add a torrent :"
+echo
+
+pth=""
+
+while [ -z "$pth" ]
+do
+	i=1
+	for paths in "$@"
+	do
+		echo "$i. $paths"
+		i=$((i+1))
+	done
+
+	echo
+	echo "Currently in \"$PWD\""
+	echo
+	echo "Enter a number or a path :"
+	read user
+	if [ -d "$PWD/$user" ]
+	then
+		pth="$PWD/$user"
+	elif [ -d "$user" ]
+	then
+		pth=$user
+	else
+		if [ "$user" -eq "$user" ]
+		then
+			eval "pth=\${$user}"
+			if [ ! -d "$pth" ]
+			then
+				pth=""
+				echo
+				echo "\033[0;31m The directory this shortcut points to doesn't exist"
+				echo "\033[0m"
+			fi
+		else
+			echo
+			echo "\033[0;31m Invalid answer, please try again"
+			echo "\033[0m"
+		fi
+	fi
+done
+
+echo
+echo "starting in \"$pth\""
+
+transmission-remote -a "$magn" -w "$pth" && notify-send "Transmission" "Torrent added in \"$pth\""
