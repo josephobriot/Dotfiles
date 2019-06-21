@@ -1,6 +1,9 @@
 """""""""""""""""""""""
 "         BASE        "
 """""""""""""""""""""""
+" idk why but it fixes the print of :2R on startup
+set t_u7=
+
 syntax on
 filetype plugin indent on
 set nocompatible
@@ -94,6 +97,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'wellle/targets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ciaranm/detectindent'
+Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
@@ -129,6 +133,8 @@ vmap ; :
 
 nnoremap k gk
 nnoremap j gj
+
+nnoremap <ESC> :noh<CR>
 
 " space open/close folds in normal mode
 nnoremap <space> za
