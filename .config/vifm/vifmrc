@@ -82,8 +82,12 @@ highlight Directory cterm=none ctermfg=4 ctermbg=default
 highlight Link cterm=none ctermfg=14 ctermbg=default
 highlight Executable cterm=none ctermfg=green ctermbg=none
 
-highlight <image/*> cterm=none ctermfg=3 ctermbg=default
-highlight <video/*> cterm=none ctermfg=13 ctermbg=default
+highlight /^.*\.(bmp|jpg|jpeg|png|xpm|gif)$/ cterm=none ctermfg=3 ctermbg=default
+highlight /^.*\.(webm|mp4|m4v|mkv|flv|avi|mov)$/ cterm=none ctermfg=13 ctermbg=default
+
+" using mime-types slows vifm enormously
+" highlight <image/*> cterm=none ctermfg=3 ctermbg=default
+" highlight <video/*> cterm=none ctermfg=13 ctermbg=default
 
 
 "fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.gif
