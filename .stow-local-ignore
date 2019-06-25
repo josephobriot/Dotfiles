@@ -10,6 +10,6 @@ userChrome\.css
 
 scrot.*
 
-lock\.sh
+deps
 
 install\.sh
