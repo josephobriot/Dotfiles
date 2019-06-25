@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bspc node -f $(bspc query -N -n newest.!automatic.local)
