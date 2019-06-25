@@ -37,7 +37,7 @@ nm-applet &
 
 feh --bg-fill ~/Images/Wallpapers/papes/17.jpg # fallback
 
-bash ~/.local/bin/pape
+$HOME/.local/bin/pape
 # files=(~/Images/Wallpapers/papes/*)
 # sh -c "wal -s -i ${files[RANDOM % ${#files[@]}]} -g"
 # # -b \"#14161b\" 
