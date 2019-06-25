@@ -25,13 +25,14 @@ bspc config external_rules              "$HOME/.config/bspwm/external_rules"
 xset r rate 250 30
 setxkbmap us -option compose:ralt
 
-killall -9 sxhkd redshift compton dunst polybar mpd
+killall -9 sxhkd redshift compton dunst polybar mpd transmission-daemon
 sxhkd &
 mpd &
 polybar -r default &
 redshift -P -c ~/.config/redshift/redshift.conf &
 # compton --backend glx --paint-on-overlay --vsync opengl-swc & # fix tearing
 compton -CGb &
+transmission-daemon &
 nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
