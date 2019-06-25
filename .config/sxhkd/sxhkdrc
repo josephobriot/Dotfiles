@@ -169,4 +169,4 @@ super + alt + m:{h,j,k,l,Left,Down,Up,Right}
 
 # losck screen
 super + x
-	sh ~/lock.sh
+	lock
