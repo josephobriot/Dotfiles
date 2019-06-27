@@ -1,5 +1,6 @@
 #!/bin/sh
 
+rm -f /tmp/base.png
 rm -f /tmp/locked.png
 
 # If `imagemagick` is not installed, use a blank screen.
