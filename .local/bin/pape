@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
+# usage : pape {file or -} {every argument here will be passed to wal}
+
 if [ $# -eq 0 ]
 then
 	files=(~/Images/Wallpapers/papes/*)
 	ar="${files[RANDOM % ${#files[@]}]}"
 else
-	if [ ${1:0:1} == "/" ]
+	if [ "${1}" == "-" ]
+	then
+		files=(~/Images/Wallpapers/papes/*)
+		ar="${files[RANDOM % ${#files[@]}]}"
+	elif [ ${1:0:1} == "/" ]
 	then
 		ar="$1"
 	else
@@ -24,7 +30,7 @@ fi
 echo $ar
 
 
-wal -i ${ar} --saturate 0.5
+wal -i ${ar} --saturate 0.5 ${@:2:${#@}}
 wal-steam -w -d
 # -b \"#14161b\" 
 #  ^ = to set backround manually
