@@ -17,7 +17,7 @@ bspc config single_monocle              true
 bspc config remove_unplugged_monitors	true
 bspc config automatic_scheme            "alternate"
 
-bspc config external_rules              "$HOME/.config/bspwm/external_rules"
+bspc config external_rules_command      "$HOME/.config/bspwm/external_rules"
 
 
 
