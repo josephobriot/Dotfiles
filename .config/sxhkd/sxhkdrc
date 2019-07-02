@@ -11,7 +11,8 @@ super + shift + Return
 
 # program launcher
 super + d
-	rofi -show drun -modi window,drun,ssh -sidebar-mode
+	j4-dmenu-desktop --dmenu="dmenu_x -f -i -l 15 -p drun -c"
+# 	rofi -show drun -modi window,drun,ssh -sidebar-mode
 #super + @space
 #	dmenu_run
 

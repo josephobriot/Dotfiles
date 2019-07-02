@@ -9,7 +9,9 @@ require stow
 ./install.sh
 ```
 
-I use a [patched st](https://github.com/josephobriot/st_custom)
+I use a [patched st](https://github.com/josephobriot/st_custom)  
+
+Also [j4-dmenu-desktop](https://github.com/enkore/j4-dmenu-desktop) for program launching with [custom dmenu](https://github.com/josephobriot/dmenu_custom)
 
 
 pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup
