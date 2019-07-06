@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Torrent
-Exec=st -e torrentadd %U
+Exec=dmtorrentadd %U
