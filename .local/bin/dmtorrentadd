@@ -1,0 +1,40 @@
+#!/bin/sh
+
+if ! pgrep -x transmission-da>/dev/null
+then
+	transmission-daemon
+	notify-send "Starting transmission-daemon"
+fi
+
+magn=$@
+
+pth=""
+
+prompt="Enter a path"
+
+while [ -z "$pth" ]
+do
+	i=1
+	for paths in "$@"
+	do
+		echo "$i. $paths"
+		i=$((i+1))
+	done
+
+	user=$(cat $HOME/.config/torrent-dirs/dm_dirs | dmenu_x -c -l 15 -p "$prompt")
+
+	if [ -z "$user" ]
+	then
+		exit
+	elif [ -d "$PWD/$user" ]
+	then
+		pth="$PWD/$user"
+	elif [ -d "$user" ]
+	then
+		pth=$user
+	else
+		prompt="directory doesn't exist, retry"
+	fi
+done
+
+transmission-remote -a "$magn" -w "$pth" && notify-send "Transmission" "Torrent added in \"$pth\""
