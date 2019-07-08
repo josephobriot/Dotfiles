@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Virgin
+Exec=firefox -P virgin --private-window
