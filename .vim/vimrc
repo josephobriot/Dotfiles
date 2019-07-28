@@ -202,6 +202,20 @@ set background=dark
 colorscheme kuroi
 
 
+function! ForceDark(manual)
+	highlight Normal ctermbg=236 guibg=NONE
+	highlight VertSplit ctermfg=7 ctermbg=236 guibg=NONE guifg=NONE
+	highlight WildMenu ctermfg=7 ctermbg=236 guibg=NONE guifg=NONE
+	highlight LineNr ctermbg=236 ctermfg=238 guibg=NONE
+	highlight CursorLineNr ctermbg=236 ctermfg=248 guibg=NONE
+	highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
+	highlight EndOfBuffer ctermbg=fg
+	if a:manual == 1
+		call g:CursorLight()
+	endif
+endfunction
+
+nnoremap <F3> :call ForceDark(1)<CR>
 
 " Resize panes whenever containing window resized.
 autocmd VimResized * wincmd =
@@ -219,3 +233,15 @@ set guicursor=
 
 " Save as sudo
 ca w!! w !sudo tee "%"
+
+
+
+
+" auto force fixed dark background if cterm0 is too light
+
+let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
+
+let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
+if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
+	call ForceDark(0)
+endif
