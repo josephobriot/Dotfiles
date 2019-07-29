@@ -21,7 +21,7 @@ do
 		i=$((i+1))
 	done
 
-	user=$(cat $HOME/.config/torrent-dirs/dm_dirs | dmenu_x -c -l 15 -p "$prompt")
+	user=$(cat $HOME/.config/torrent-dirs/dm_dirs | dmenu_x -c -bo 5 -l 15 -p "$prompt")
 
 	if [ -z "$user" ]
 	then
