@@ -62,6 +62,7 @@ killall dunst
 dunst -conf ${HOME}/.config/dunstrc/dunstrc \
 -lb "$color0" -lf "$color7" -lfr "$color1" \
 -nb "$color0" -nf "$color7" -nfr "$color1" \
--cb "$color0" -cf "$color7" -cfr "$color1" &
+-cb "$color0" -cf "$color7" -cfr "$color1" \
+-sep_color "$color1" &
 sleep 0.5
 notify-send "wm Loaded" "uwu"
