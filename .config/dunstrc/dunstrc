@@ -29,7 +29,7 @@
 	max_icon_size = 128
 
 [frame]
-    width = 2
+    width = 3
     color = "#F0544C"
 
 [shortcuts]
