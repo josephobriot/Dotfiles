@@ -243,5 +243,11 @@ let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
 
 let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
 if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
-	call ForceDark(0)
+	" call ForceDark(0)
+	set background=light
+	colorscheme papercolor
+	let g:lightline = {
+				\ 'colorscheme': 'PaperColor',
+				\ }
+	let g:EnableCursorDarken = 1
 endif
