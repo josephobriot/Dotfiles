@@ -46,3 +46,4 @@ st.font: Hack:pixelsize=16
 ! st background, to use with my st fork
 ! 256 to use *.background
 st.fxbackground: 0
+st.fxforeground: 7
