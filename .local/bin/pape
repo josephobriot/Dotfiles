@@ -21,6 +21,10 @@ else
 	if [ -f "$ar" ]
 	then
 		echo "continuing"
+	elif [ -d "$ar" ]
+	then
+		eval files=($ar/*)
+		ar="${files[RANDOM % ${#files[@]}]}"
 	else
 		echo "file does not exist, exiting..."
 		exit 0
