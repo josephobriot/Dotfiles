@@ -36,7 +36,7 @@ compton -CGb &
 
 feh --bg-fill ~/Images/Wallpapers/papes/17.jpg # fallback
 
-$HOME/.local/bin/pape
+$HOME/.local/bin/pape Images/Wallpapers/papes/golden/
 # files=(~/Images/Wallpapers/papes/*)
 # sh -c "wal -s -i ${files[RANDOM % ${#files[@]}]} -g"
 # # -b \"#14161b\" 
