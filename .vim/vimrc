@@ -1,7 +1,3 @@
-"""""""""""""""""""""""
-"         BASE        "
-"""""""""""""""""""""""
-
 syntax on
 filetype plugin indent on
 set nocompatible
@@ -23,50 +19,50 @@ set cmdheight=1
 set backspace=indent,eol,start " Backspacing over every character in insert mode
 set autoindent
 set ignorecase
-set noshowmode " no status bar
-"set scrolloff=8
+" set noshowmode " no status bar
+" set scrolloff=8
 set scrolloff=999
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
 " set colorcolumn=80
 autocmd BufEnter * :syntax sync fromstart
 
-function! ColorLine(mode)
-	if a:mode == 'i'
-		hi User5 ctermfg=7 ctermbg=27
-	elseif a:mode == 'r'
-		hi User5 ctermfg=7 ctermbg=124
-	else
-		hi User5 ctermfg=7 ctermbg=20
-	endif
-endfunction
+" function! ColorLine(mode)
+" 	if a:mode == 'i'
+" 		hi User5 ctermfg=7 ctermbg=27
+" 	elseif a:mode == 'r'
+" 		hi User5 ctermfg=7 ctermbg=124
+" 	else
+" 		hi User5 ctermfg=7 ctermbg=20
+" 	endif
+" endfunction
 
-au InsertEnter * call ColorLine(v:insertmode)
-au InsertLeave * hi User5 guibg=Black ctermfg=6 guifg=White ctermbg=0
+" au InsertEnter * call ColorLine(v:insertmode)
+" au InsertLeave * hi User5 guibg=Black ctermfg=6 guifg=White ctermbg=0
 
-hi User5 guibg=Black ctermfg=14 guifg=White ctermbg=0
-hi User2 guibg=Black ctermfg=0 guifg=White ctermbg=79
-hi User3 guibg=Black ctermfg=7 guifg=White ctermbg=27
-
-hi StatusLine guibg=Black ctermfg=6 guifg=White ctermbg=0
-hi StatusLineNC guibg=Black ctermfg=235 guifg=White ctermbg=0
+" hi User5 guibg=Black ctermfg=14 guifg=White ctermbg=0
+" hi User2 guibg=Black ctermfg=0 guifg=White ctermbg=2
+" hi User3 guibg=Black ctermfg=7 guifg=White ctermbg=2
+" 
+" hi StatusLine guibg=Black ctermfg=6 guifg=White ctermbg=0
+" hi StatusLineNC guibg=Black ctermfg=235 guifg=White ctermbg=0
 
 " Formats the statusline
-set statusline=\%2*
-set statusline+=\ %f                           " file name
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=\ %y      "filetype
+set statusline=%#PmenuSel#
+set statusline+=\ %f      " file name
 set statusline+=\ %m      "modified flag
 set statusline+=\ %r      "read only flag
-set statusline+=\%4*
+set statusline+=%#CursorLine#
 
 set statusline+=%=
-set statusline+=\%5*
-set statusline+=\ [%{mode()}]
-set statusline+=\ %3*
-set statusline+=\ line\ %l\ of\ %L
-set statusline+=\ %4* 
+" set statusline+=\ [%{mode()}]
+set statusline+=%y      "filetype
+set statusline+=\ \|\ 
+set statusline+=%{strlen(&fenc)?&fenc:'none'} "file encoding
+set statusline+=\ \|\ 
+set statusline+=%{&ff} "file format
+set statusline+=\ \|\ 
+set statusline+=%l:%c\ /\ %L\ 
 set laststatus=2
 
 
@@ -77,7 +73,7 @@ set fillchars=vert:\|
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'dylanaraps/fff.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
@@ -99,9 +95,9 @@ Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ }
 
 " let delimitMate_expand_cr = 2
 " let delimitMate_expand_space = 1
@@ -186,7 +182,9 @@ autocmd ColorScheme * highlight User3 guibg=NONE ctermfg=7 guifg=NONE ctermbg=27
 autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
 autocmd ColorScheme * highlight Search ctermbg=242 ctermfg=196
 
-let g:CursorLightenFactor = 50
+autocmd ColorScheme * highlight PmenuSel ctermbg=0 ctermfg=2
+
+let g:CursorLightenFactor = 30
 
 augroup BgHighlight
 	autocmd!
@@ -246,8 +244,8 @@ if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
 	" call ForceDark(0)
 	set background=light
 	colorscheme papercolor
-	let g:lightline = {
-				\ 'colorscheme': 'PaperColor',
-				\ }
+	" let g:lightline = {
+	" 			\ 'colorscheme': 'PaperColor',
+	" 			\ }
 	let g:EnableCursorDarken = 1
 endif
