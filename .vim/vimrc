@@ -9,7 +9,7 @@ set showbreak=↪
 set display+=lastline
 set tabstop=4 expandtab shiftwidth=4 smarttab
 set list lcs=tab:\│\ 
-set number
+set number relativenumber
 set mouse= " Don't allow mouse
 set ruler " Display cursor
 set cursorline " cursorcolumn
@@ -236,16 +236,17 @@ ca w!! w !sudo tee "%"
 
 
 " auto force fixed dark background if cterm0 is too light
+if ($TERM == "xterm-256color")
+	let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
 
-let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
-
-let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
-if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
-	" call ForceDark(0)
-	set background=light
-	colorscheme papercolor
-	" let g:lightline = {
-	" 			\ 'colorscheme': 'PaperColor',
-	" 			\ }
-	let g:EnableCursorDarken = 1
+	let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
+	if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
+		" call ForceDark(0)
+		set background=light
+		colorscheme papercolor
+		" let g:lightline = {
+		" 			\ 'colorscheme': 'PaperColor',
+		" 			\ }
+		let g:EnableCursorDarken = 1
+	endif
 endif
