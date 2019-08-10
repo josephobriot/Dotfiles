@@ -207,7 +207,7 @@ function! ForceDark(manual)
 	highlight LineNr ctermbg=236 ctermfg=238 guibg=NONE
 	highlight CursorLineNr ctermbg=236 ctermfg=248 guibg=NONE
 	highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
-	highlight EndOfBuffer ctermbg=fg
+	highlight EndOfBuffer ctermbg=bg
 	if a:manual == 1
 		call g:CursorLight()
 	endif
