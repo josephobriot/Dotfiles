@@ -95,23 +95,29 @@ highlight /^.*\.(webm|mp4|m4v|mkv|flv|avi|mov)$/ cterm=none ctermfg=13 ctermbg=d
 "        \ %pc
 "        \ ~/.config/vifm/scripts/vifmimg clear
 
+fileviewer *.gif
+         \ tput cup 20 20 > /dev/tty && chafa --clear --size=%pwx%ph -c 240 %c
+
 fileviewer <image/*>
-        \ ~/.config/vifm/scripts/vifmimg draw %px %py %pw %ph %c
-        \ %pc
-        \ ~/.config/vifm/scripts/vifmimg clear
+         \ chafa --clear --size=%pwx%ph -c 240 %c
+"        \ ~/.config/vifm/scripts/vifmimg draw %px %py %pw %ph %c
+"        \ %pc
+"        \ ~/.config/vifm/scripts/vifmimg clear
 
 fileviewer *.pdf
-        \ ~/.config/vifm/scripts/vifmimg pdfpreview %px %py %pw %ph %c
-        \ %pc
-        \ ~/.config/vifm/scripts/vifmimg clear
+         \ chafa --clear --size=%pwx%ph -c 240 %c
+"        \ ~/.config/vifm/scripts/vifmimg pdfpreview %px %py %pw %ph %c
+"        \ %pc
+"        \ ~/.config/vifm/scripts/vifmimg clear
 
-map > :!~/.config/vifm/scripts/vifmimg inc<CR>
-map < :!~/.config/vifm/scripts/vifmimg dec<CR>
+"map > :!~/.config/vifm/scripts/vifmimg inc<CR>
+"map < :!~/.config/vifm/scripts/vifmimg dec<CR>
 
 fileviewer *.ico
-        \ ~/.config/vifm/scripts/vifmimg magickpreview %px %py %pw %ph %c
-        \ %pc
-        \ ~/.config/vifm/scripts/vifmimg clear
+         \ chafa --clear --size=%pwx%ph -c 240 %c
+"        \ ~/.config/vifm/scripts/vifmimg magickpreview %px %py %pw %ph %c
+"        \ %pc
+"        \ ~/.config/vifm/scripts/vifmimg clear
 
 fileviewer <text/*>
         \ bat --color always --paging never --plain %c
