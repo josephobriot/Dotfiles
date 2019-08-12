@@ -75,7 +75,7 @@ function MyTabLine()
 		if i + 1 == tabpagenr()
 			let s .= '%#TabLineSel#'
 		else
-			let s .= '%#CursorLine#' " TabLine
+			let s .= '%#TabLine#'
 		endif
 
 		" set the tab page number (for mouse clicks)
@@ -83,13 +83,10 @@ function MyTabLine()
 
 		" the label is made by MyTabLabel()
 		let s .= '%{MyTabLabel(' . (i + 1) . ')}'
-		if (i != range(tabpagenr('$'))[-1])
-			let s .= '%#CursorLine# ' " TabLineFill
-		endif
 	endfor
 
 	" after the last tab fill with TabLineFill and reset tab page nr
-	let s .= '%#CursorLine#%T' " TabLineFill
+	let s .= '%#TabLineFill#%T'
 
 	" right-align the label to close the current tab page
 	" if tabpagenr('$') > 1
@@ -103,9 +100,9 @@ function MyTabLabel(n)
 	let buflist = tabpagebuflist(a:n)
 	let winnr = tabpagewinnr(a:n)
 	if (bufname(buflist[winnr - 1]) == "")
-		return "[new buffer]"
+		return " new buffer "
 	endif
-	return "[".bufname(buflist[winnr - 1])."]"
+	return " ".bufname(buflist[winnr - 1])." "
 endfunction
 
 
@@ -216,12 +213,11 @@ autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0 guibg=NONE guifg=NO
 autocmd ColorScheme * highlight LineNr ctermbg=0 ctermfg=238 guibg=NONE
 autocmd ColorScheme * highlight CursorLineNr ctermbg=0 ctermfg=248 guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=bg
+autocmd ColorScheme * highlight EndOfBuffer cterm=NONE ctermbg=bg
 
 autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
 autocmd ColorScheme * highlight Search ctermbg=242 ctermfg=196
 
-autocmd ColorScheme * highlight TabLineSel cterm=NONE ctermbg=2 ctermfg=0
 autocmd ColorScheme * highlight TabLine cterm=NONE ctermbg=bg ctermfg=fg
 autocmd ColorScheme * highlight TabLineFill cterm=NONE ctermbg=bg ctermfg=fg
 
@@ -242,21 +238,6 @@ set background=dark
 " colorscheme mysticaltutor
 colorscheme kuroi
 
-
-function! ForceDark(manual)
-	highlight Normal ctermbg=236 guibg=NONE
-	highlight VertSplit ctermfg=7 ctermbg=236 guibg=NONE guifg=NONE
-	highlight WildMenu ctermfg=7 ctermbg=236 guibg=NONE guifg=NONE
-	highlight LineNr ctermbg=236 ctermfg=238 guibg=NONE
-	highlight CursorLineNr ctermbg=236 ctermfg=248 guibg=NONE
-	highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
-	highlight EndOfBuffer ctermbg=bg
-	if a:manual == 1
-		call g:CursorLight()
-	endif
-endfunction
-
-nnoremap <F3> :call ForceDark(1)<CR>
 
 " Resize panes whenever containing window resized.
 autocmd VimResized * wincmd =
@@ -291,13 +272,17 @@ function! UpdateBg(manual)
 				" call ForceDark(0)
 				set background=light
 				colorscheme papercolor
-				set background=dark
-				" let g:lightline = {
-				" 			\ 'colorscheme': 'PaperColor',
-				" 			\ }
 				let g:EnableCursorDarken = 1
 				if a:manual == 1
 					call g:CursorShadow()
+					exec "highlight TabLineSel cterm=NONE ctermbg=". g:DarkenColor("0", 100, "term") ." ctermfg=0"
+				else
+					let s:bufopen = 0
+					augroup AfterRc
+						autocmd BufEnter * let s:bufopen += 1
+						autocmd BufEnter * exec "highlight TabLineSel cterm=NONE ctermbg=". g:DarkenColor("0", 100, "term") ." ctermfg=0"
+						autocmd BufEnter * if s:bufopen > 1 | autocmd! AfterRc | endif
+					augroup END
 				endif
 			else
 				set background=dark
@@ -306,6 +291,14 @@ function! UpdateBg(manual)
 				unlet g:EnableCursorDarken
 				if a:manual == 1
 					call g:CursorLight()
+					exec "highlight TabLineSel cterm=NONE ctermbg=". g:LightenColor("0", 100, "term") ." ctermfg=0"
+				else
+					let s:bufopen = 0
+					augroup AfterRc
+						autocmd BufEnter * let s:bufopen += 1
+						autocmd BufEnter * exec "highlight TabLineSel cterm=NONE ctermbg=". g:LightenColor("0", 100, "term") ." ctermfg=0"
+						autocmd BufEnter * if s:bufopen > 1 | autocmd! AfterRc | endif
+					augroup END
 				endif
 			endif
 		endif
