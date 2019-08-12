@@ -35,7 +35,6 @@ echo $ar
 
 
 wal -i "${ar}" --saturate 0.5 ${@:2:${#@}}
-wal-steam -w -d
 # -b \"#14161b\" 
 #  ^ = to set backround manually
 
