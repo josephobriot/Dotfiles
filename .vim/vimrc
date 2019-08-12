@@ -65,6 +65,49 @@ set statusline+=\ \|\
 set statusline+=%l:%c\ /\ %L\ 
 set laststatus=2
 
+set tabline=%!MyTabLine()
+
+function MyTabLine()
+	let s = ''
+	for i in range(tabpagenr('$'))
+		let s.= ' '
+		" select the highlighting
+		if i + 1 == tabpagenr()
+			let s .= '%#TabLineSel#'
+		else
+			let s .= '%#CursorLine#' " TabLine
+		endif
+
+		" set the tab page number (for mouse clicks)
+		let s .= '%' . (i + 1) . 'T'
+
+		" the label is made by MyTabLabel()
+		let s .= '%{MyTabLabel(' . (i + 1) . ')}'
+		if (i != range(tabpagenr('$'))[-1])
+			let s .= '%#CursorLine# ' " TabLineFill
+		endif
+	endfor
+
+	" after the last tab fill with TabLineFill and reset tab page nr
+	let s .= '%#CursorLine#%T' " TabLineFill
+
+	" right-align the label to close the current tab page
+	" if tabpagenr('$') > 1
+	" 	let s .= '%=%#TabLine#%999Xclose'
+	" endif
+
+	return s
+endfunction
+
+function MyTabLabel(n)
+	let buflist = tabpagebuflist(a:n)
+	let winnr = tabpagewinnr(a:n)
+	if (bufname(buflist[winnr - 1]) == "")
+		return "[new buffer]"
+	endif
+	return "[".bufname(buflist[winnr - 1])."]"
+endfunction
+
 
 
 set fillchars=vert:\|
@@ -168,19 +211,19 @@ if has("autocmd")
 endif
 
 autocmd ColorScheme * highlight Normal ctermbg=0 guibg=NONE
-autocmd ColorScheme * highlight VertSplit ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
+autocmd ColorScheme * highlight VertSplit ctermfg=fg ctermbg=bg guibg=NONE guifg=NONE
 autocmd ColorScheme * highlight WildMenu ctermfg=7 ctermbg=0 guibg=NONE guifg=NONE
 autocmd ColorScheme * highlight LineNr ctermbg=0 ctermfg=238 guibg=NONE
 autocmd ColorScheme * highlight CursorLineNr ctermbg=0 ctermfg=248 guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=249 ctermfg=236 guibg=NONE guifg=NONE
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=bg
 
-autocmd ColorScheme * highlight User5 guibg=NONE ctermfg=14 guifg=NONE ctermbg=0
-autocmd ColorScheme * highlight User2 guibg=NONE ctermfg=0 guifg=NONE ctermbg=79
-autocmd ColorScheme * highlight User3 guibg=NONE ctermfg=7 guifg=NONE ctermbg=27
-
 autocmd ColorScheme * highlight MatchParen ctermbg=242 ctermfg=202
 autocmd ColorScheme * highlight Search ctermbg=242 ctermfg=196
+
+autocmd ColorScheme * highlight TabLineSel cterm=NONE ctermbg=2 ctermfg=0
+autocmd ColorScheme * highlight TabLine cterm=NONE ctermbg=bg ctermfg=fg
+autocmd ColorScheme * highlight TabLineFill cterm=NONE ctermbg=bg ctermfg=fg
 
 autocmd ColorScheme * highlight PmenuSel ctermbg=0 ctermfg=2
 
@@ -234,19 +277,41 @@ ca w!! w !sudo tee "%"
 
 
 
-
 " auto force fixed dark background if cterm0 is too light
-if ($TERM == "xterm-256color" && $DISPLAY != "")
-	let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
 
-	let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
-	if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
-		" call ForceDark(0)
-		set background=light
-		colorscheme papercolor
-		" let g:lightline = {
-		" 			\ 'colorscheme': 'PaperColor',
-		" 			\ }
-		let g:EnableCursorDarken = 1
+let s:background = ""
+function! UpdateBg(manual)
+	if ($TERM == "xterm-256color" && $DISPLAY != "")
+		let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
+
+		let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
+		if (s:background != s:color0)
+			let s:background = s:color0
+			if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
+				" call ForceDark(0)
+				set background=light
+				colorscheme papercolor
+				set background=dark
+				" let g:lightline = {
+				" 			\ 'colorscheme': 'PaperColor',
+				" 			\ }
+				let g:EnableCursorDarken = 1
+				if a:manual == 1
+					call g:CursorShadow()
+				endif
+			else
+				set background=dark
+				colorscheme kuroi
+				let g:EnableCursorDarken = 1
+				unlet g:EnableCursorDarken
+				if a:manual == 1
+					call g:CursorLight()
+				endif
+			endif
+		endif
 	endif
-endif
+endfunction
+
+call UpdateBg(0)
+
+nnoremap <F5> :call UpdateBg(1)<CR>
