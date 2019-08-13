@@ -9,7 +9,7 @@ require stow
 ./install.sh
 ```
 
-I use a [patched st](https://github.com/josephobriot/st_custom)  
+I use a [patched st](https://github.com/josephobriot/st_custom), don't forget to install the symbola font so that it doesn't crash when displaying emojis. 
 
 Also [j4-dmenu-desktop](https://github.com/enkore/j4-dmenu-desktop) for program launching with [custom dmenu](https://github.com/josephobriot/dmenu_custom)
 
