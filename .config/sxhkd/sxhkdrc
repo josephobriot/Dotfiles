@@ -36,7 +36,7 @@ super + shift + n
 	st -e ~/.local/bin/vifmrun
 
 super + v
-    splatmoji copy
+    dmenu_kaomojis
 
 Print
 	bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
