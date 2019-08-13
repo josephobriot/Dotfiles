@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat $HOME/.url_history | dmenu_x -p "Browse thw web" | sed -e s/\"/\\\\\"/ -e s/\'/\\\\\'/ | xargs -I {} sh -c '
+cat $HOME/.url_history | dmenu_x -p "Browse the web" | sed -e s/\"/\\\\\"/ -e s/\'/\\\\\'/ | xargs -I {} sh -c '
 echo "{}" >> $HOME/.url_history
 
 xdotool getactivewindow getwindowname | grep "Mozilla Firefox" >/dev/null &&
@@ -19,10 +19,3 @@ xdotool search --name "Mozilla Firefox" windowactivate &&
 	xdotool key "BackSpace" &&
 	xdotool key "Return"
 '
-
-# active=$(xdotool getactivewindow getwindowname)
-# 
-# if [ $active == *"Mozilla Firefox"* ]
-# then
-# 	echo "hey"
-# fi

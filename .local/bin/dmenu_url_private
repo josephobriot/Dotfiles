@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cat /dev/null | dmenu_x -p "Browse the *private* web" | sed -e s/\"/\\\\\"/ -e s/\'/\\\\\'/ | xargs -I {} sh -c '
+xdotool getactivewindow getwindowname | grep "Mozilla Firefox (Navigation privée)" >/dev/null &&
+	xdotool key ctrl+t &&
+	xdotool key ctrl+l &&
+	xdotool type "{} " &&
+	xdotool key "BackSpace" &&
+	xdotool key "Return" &&
+	exit
+
+
+firefox --private-window &&
+	sleep 1 &&
+	xdotool key ctrl+l &&
+	xdotool type "{} " &&
+	xdotool key "BackSpace" &&
+	xdotool key "Return"
+'
