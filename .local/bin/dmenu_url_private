@@ -11,7 +11,7 @@ xdotool getactivewindow getwindowname | grep "Mozilla Firefox (Navigation privé
 
 
 firefox --private-window &&
-	sleep 1 &&
+	sleep 0.5 &&
 	xdotool key ctrl+l &&
 	xdotool type "{} " &&
 	xdotool key "BackSpace" &&
