@@ -1,21 +1,23 @@
 #!/bin/sh
 
-cat $HOME/.url_history | dmenu_x -p "Browse the web" | sed -e s/\"/\\\\\"/ -e s/\'/\\\\\'/ | xargs -I {} sh -c '
-echo "{}" >> $HOME/.url_history
+search=$(cat $HOME/.url_history | dmenu_x -p "Browse the web")
+
+if [ -z "$search" ]; then exit; fi
+
+echo "$search" | cat - $HOME/.url_history | sed -e "1,2 s/$search/NOCHANGE/" -e "/^$search$/d" -e "s/NOCHANGE/$search/" > temp && mv temp $HOME/.url_history
 
 xdotool getactivewindow getwindowname | grep "Mozilla Firefox" >/dev/null &&
 	xdotool key ctrl+t &&
 	xdotool key ctrl+l &&
-	xdotool type "{} " &&
+	xdotool type "$search " &&
 	xdotool key "BackSpace" &&
 	xdotool key "Return" &&
 	exit
 
-
 xdotool search --name "Mozilla Firefox" windowactivate &&
 	xdotool key ctrl+t &&
 	xdotool key ctrl+l &&
-	xdotool type "{} " &&
+	xdotool type "$search " &&
 	xdotool key "BackSpace" &&
 	xdotool key "Return"
 '
