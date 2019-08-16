@@ -6,7 +6,7 @@ if [ -z "$search" ]; then exit; fi
 
 echo "$search" | cat - $HOME/.url_history | sed -e "1,1 s/$search/NOCHANGE/" -e "/^$search$/d" -e "s/NOCHANGE/$search/" > temp && mv temp $HOME/.url_history
 
-xdotool getactivewindow getwindowname | grep "Mozilla Firefox" >/dev/null &&
+xdotool getactivewindow getwindowname | grep "Mozilla Firefox$" >/dev/null &&
 	xdotool key ctrl+t &&
 	xdotool key ctrl+l &&
 	xdotool type "$search " &&
