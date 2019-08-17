@@ -16,7 +16,7 @@ Also [j4-dmenu-desktop](https://github.com/enkore/j4-dmenu-desktop) for program 
 
 pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup  
 
-don't forget too add this in your `.config/mimeapps.list``` under Default Application
+don't forget too add this in your `.config/mimeapps.list` under Default Application
 ```
 x-scheme-handler/magnet=torrent.desktop
 application/x-bittorrent=torrent.desktop
