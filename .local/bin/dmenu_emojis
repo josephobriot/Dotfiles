@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat $HOME/.config/emojis | dmenu_x -l 15 -b -p "Emojis" | sed -e "s/    .*$//" | tr -d '\n' | xclip -selection clipboard

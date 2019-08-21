@@ -41,6 +41,9 @@ super + shift + n
 super + v
     dmenu_kaomojis
 
+super + a
+    dmenu_emojis
+
 Print
 	bash -c "maim -s | tee ~/Images/\$(date +%Y-%m-%d-%H-%M-%S).png | xclip -selection clipboard -t image/png"
 	# flameshot gui
