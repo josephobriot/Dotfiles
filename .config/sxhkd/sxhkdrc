@@ -97,10 +97,6 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l,Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east,west,south,north,east}
 
-# focus parent node
-super + a
-	bspc node -f @parent
-
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
