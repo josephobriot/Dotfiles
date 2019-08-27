@@ -1,0 +1,16 @@
+#!/bin/sh
+
+directory="$HOME/Images/Wallpapers/papes/golden"
+
+selected=$(ls $directory | dmenu_x -p "choose a wallpaper")
+
+if [ -z $selected ]; then exit; fi 
+
+theme=$(echo "dark\\nlight" | dmenu_x -p "choose a theme")
+
+if [ "$theme" = "light" ]
+then
+	pape "$directory/$selected" -l
+else
+	pape "$directory/$selected"
+fi
