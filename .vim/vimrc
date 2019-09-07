@@ -132,6 +132,7 @@ Plug 'wellle/targets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ciaranm/detectindent'
 Plug 'junegunn/vim-peekaboo'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -144,6 +145,7 @@ call plug#end()
 
 inoremap <F2> <esc>:TableModeToggle<CR>li
 nnoremap <F2> :TableModeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 let g:detectindent_preferred_indent = 4
 let g:detectindent_preferred_when_mixed = 1
