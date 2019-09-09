@@ -2,4 +2,4 @@
 
 . "$HOME/.cache/wal/colors.sh"
 
-dmenu -nb "$color0" -nf "$color7" -sb "$color1" -sf "$color7" -h 40 "$@"
+dmenu -nb "$color0" -nf "$color7" -sb "$color1" -sf "$color0" -h 40 "$@"
