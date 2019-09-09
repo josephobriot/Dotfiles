@@ -1,36 +1,28 @@
 # My Dotfiles
-
-nothing original
+whatever
 
 ## Install
+why would you need an install tuto anyway...  
 
 require stow
 ```sh
 ./install.sh
 ```
 
-I use a [patched st](https://github.com/josephobriot/st_custom), don't forget to install the symbola font so that it doesn't crash when displaying emojis. 
+I use a [patched st](https://github.com/josephobriot/st_custom), don't forget to install the symbola font so that it doesn't crash when displaying emojis fellow zoomers (kms). 
 
 Also [j4-dmenu-desktop](https://github.com/enkore/j4-dmenu-desktop) for program launching with [custom dmenu](https://github.com/josephobriot/dmenu_custom)
 
 
-pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup  
+pywal generates colors from a random wallpaper in ~/Images/Wallpapers/papes at startup cuz anime, fuck you, cirno's stronger 
 
-don't forget too add this in your `.config/mimeapps.list` under Default Application
+don't forget too add this in your `.config/mimeapps.list` under Default Application, or use your brain idk
 ```
 x-scheme-handler/magnet=torrent.desktop
 application/x-bittorrent=torrent.desktop
 ```
 
-pape script (in .local/bin) can be used with a wallpaper as first argument to load colors on bspwm and dunst
-
-![img](scrot_1.png)
-
-![img](scrot_2.png)
-
-![img](scrot_3.png)
-
-
+pape script (in .local/bin) can be used with a wallpaper as first argument to load colors on bspwm and dunst (haha, tiling wm > all hahahahaha, fuck you too)  
 
 programs to install ([raw list in deps](https://github.com/josephobriot/Dotfiles/blob/master/deps)) :
 
