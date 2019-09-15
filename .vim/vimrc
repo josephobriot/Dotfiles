@@ -198,6 +198,9 @@ inoremap <C-k> <Esc>:m -2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
+" copy to clipboard
+vmap <F6> :!xclip -f -sel clip<CR>
+
 
 autocmd Filetype * AnyFoldActivate
 set foldlevel=99
