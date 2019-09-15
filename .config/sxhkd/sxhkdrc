@@ -146,6 +146,9 @@ super + ctrl + {1-9}
 #super + ctrl + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
 	bspc node -o 0.{1-9}
 
+super + alt + {1-9}
+	bspc node @parent -r 0.{1-9}
+
 # cancel the preselection for the focused node
 super + ctrl + space
 	bspc node -p cancel
