@@ -124,7 +124,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'pseewald/vim-anyfold'
 Plug 'josephobriot/vim-cursorlight'
 Plug 'idanarye/vim-dutyl'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
 " Plug 'Raimondi/delimitMate'
 Plug 'machakann/vim-sandwich'
 " Plug 'christoomey/vim-system-copy' problem is that the keybinding cp isn't removable and I'm lazy
