@@ -38,10 +38,10 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 3
+border-size = 2
 ; border-color = #00000000
 border-color = ${colors.primary}
-border-bottom = 3
+border-bottom = 2
 
 padding-left = 3
 padding-right = 3
