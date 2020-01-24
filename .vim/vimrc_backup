@@ -7,7 +7,7 @@ set breakindentopt=sbr
 set linebreak
 set showbreak=↪
 set display+=lastline
-set tabstop=8
+set tabstop=4 expandtab shiftwidth=4 smarttab
 set list lcs=tab:\│\ 
 set number relativenumber
 set mouse= " Don't allow mouse
@@ -19,12 +19,33 @@ set cmdheight=1
 set backspace=indent,eol,start " Backspacing over every character in insert mode
 set autoindent
 set ignorecase
+" set noshowmode " no status bar
+" set scrolloff=8
 set scrolloff=999
 set splitbelow splitright
 set timeoutlen=1000 ttimeoutlen=0 " remove escape delay
-set colorcolumn=80
+" set colorcolumn=80
 autocmd BufEnter * :syntax sync fromstart
 
+" function! ColorLine(mode)
+" 	if a:mode == 'i'
+" 		hi User5 ctermfg=7 ctermbg=27
+" 	elseif a:mode == 'r'
+" 		hi User5 ctermfg=7 ctermbg=124
+" 	else
+" 		hi User5 ctermfg=7 ctermbg=20
+" 	endif
+" endfunction
+
+" au InsertEnter * call ColorLine(v:insertmode)
+" au InsertLeave * hi User5 guibg=Black ctermfg=6 guifg=White ctermbg=0
+
+" hi User5 guibg=Black ctermfg=14 guifg=White ctermbg=0
+" hi User2 guibg=Black ctermfg=0 guifg=White ctermbg=2
+" hi User3 guibg=Black ctermfg=7 guifg=White ctermbg=2
+" 
+" hi StatusLine guibg=Black ctermfg=6 guifg=White ctermbg=0
+" hi StatusLineNC guibg=Black ctermfg=235 guifg=White ctermbg=0
 
 " Formats the statusline
 set statusline=%#PmenuSel#
@@ -92,14 +113,55 @@ set fillchars=vert:\|
 
 call plug#begin('~/.vim/plugged')
 
+" Plug 'itchyny/lightline.vim'
+Plug 'dylanaraps/fff.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine'
+Plug 'machakann/vim-highlightedyank'
 Plug 'pseewald/vim-anyfold'
+Plug 'josephobriot/vim-cursorlight'
+Plug 'idanarye/vim-dutyl'
+" Plug 'rhysd/clever-f.vim'
+" Plug 'Raimondi/delimitMate'
+Plug 'machakann/vim-sandwich'
+" Plug 'christoomey/vim-system-copy' problem is that the keybinding cp isn't removable and I'm lazy
+Plug 'wellle/targets.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'ciaranm/detectindent'
+Plug 'junegunn/vim-peekaboo'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ }
+
+" let delimitMate_expand_cr = 2
+" let delimitMate_expand_space = 1
+
+inoremap <F2> <esc>:TableModeToggle<CR>li
+nnoremap <F2> :TableModeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+let g:detectindent_preferred_indent = 4
+let g:detectindent_preferred_when_mixed = 1
+autocmd BufEnter * DetectIndent
+
+let g:polyglot_disabled = ['markdown']
+
+let g:clever_f_across_no_line = 1
+let g:indentLine_char = '¦'
+" Open fff
+nnoremap , :F<CR>
 " Open fzf
 noremap . :FZF<CR>
+" let g:fzf_layout = { 'down': '~20%' }
+" Vertical split (NERDtree style).
+let g:fff#split = "30vnew"
 
 " ; to enter commands, so I don't need shift
 nmap ; :
@@ -166,14 +228,19 @@ autocmd ColorScheme * highlight TabLineFill cterm=NONE ctermbg=bg ctermfg=fg
 
 autocmd ColorScheme * highlight PmenuSel ctermbg=0 ctermfg=2
 
+let g:CursorLightenFactor = 30
 
 augroup BgHighlight
 	autocmd!
+	" autocmd WinEnter * set colorcolumn=80
+	" autocmd WinLeave * set colorcolumn=0
 	autocmd WinEnter * set cul
 	autocmd WinLeave * set nocul
 augroup END
 
 set background=dark
+" colorscheme palenight
+" colorscheme mysticaltutor
 colorscheme kuroi
 
 
@@ -193,3 +260,56 @@ set guicursor=
 
 " Save as sudo
 ca w!! w !sudo tee "%"
+
+
+
+" auto force fixed dark background if cterm0 is too light
+
+let s:background = ""
+function! UpdateBg(manual)
+	if ($TERM == "xterm-256color" && $DISPLAY != "")
+		let s:color0 = system("xrdb -query | grep '*.color0:' | awk '{print $2}'")
+
+		let s:colors = ['0x'.s:color0[1:2], '0x'.s:color0[3:4], '0x'.s:color0[5:6]]
+		if (s:background != s:color0)
+			let s:background = s:color0
+			if (s:colors[0] + s:colors[1] + s:colors[2]) / 3 > 128
+				" call ForceDark(0)
+				set background=light
+				colorscheme papercolor
+				let g:EnableCursorDarken = 1
+				if a:manual == 1
+					call g:CursorShadow()
+					exec "highlight TabLineSel cterm=NONE ctermbg=". g:DarkenColor("0", 100, "term") ." ctermfg=0"
+				else
+					let s:bufopen = 0
+					augroup AfterRc
+						autocmd BufEnter * let s:bufopen += 1
+						autocmd BufEnter * exec "highlight TabLineSel cterm=NONE ctermbg=". g:DarkenColor("0", 100, "term") ." ctermfg=0"
+						autocmd BufEnter * if s:bufopen > 1 | autocmd! AfterRc | endif
+					augroup END
+				endif
+			else
+				set background=dark
+				colorscheme kuroi
+				let g:EnableCursorDarken = 1
+				unlet g:EnableCursorDarken
+				if a:manual == 1
+					call g:CursorLight()
+					exec "highlight TabLineSel cterm=NONE ctermbg=". g:LightenColor("0", 100, "term") ." ctermfg=0"
+				else
+					let s:bufopen = 0
+					augroup AfterRc
+						autocmd BufEnter * let s:bufopen += 1
+						autocmd BufEnter * exec "highlight TabLineSel cterm=NONE ctermbg=". g:LightenColor("0", 100, "term") ." ctermfg=0"
+						autocmd BufEnter * if s:bufopen > 1 | autocmd! AfterRc | endif
+					augroup END
+				endif
+			endif
+		endif
+	endif
+endfunction
+
+call UpdateBg(0)
+
+nnoremap <F5> :call UpdateBg(1)<CR>
