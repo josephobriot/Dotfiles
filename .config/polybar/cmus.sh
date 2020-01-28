@@ -5,7 +5,7 @@ prepend_zero () {
 }
 
 artist=$(echo -n $(cmus-remote -C status | grep "tag artist" | cut -c 12-))
-song=$(echo -n $(cmus-remote -C status | grep title | cut -c 11-))
+song=$(echo -n $(cmus-remote -C status | grep "tag title" | cut -c 11-))
 
 if [ -z "$artist$song" ]; then
 	echo
